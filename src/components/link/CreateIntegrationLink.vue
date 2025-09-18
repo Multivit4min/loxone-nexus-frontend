@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { createLink } from "@/api/link"
 import { computed } from "vue"
-import { VariableDirection, type LoxoneVariable } from "@/api/loxone"
 import { useAppStore } from "@/store/app"
 import { storeToRefs } from "pinia"
-import type { IntegrationVariable } from "@/api/integration"
 import { useIntegrationStore } from "@/store/integration"
 import VariableList from "../VariableList.vue"
+import type { LoxoneVariable } from "@/api/types/loxone"
+import { VariableDirection } from "@/api/types/variable"
+import type { IntegrationVariable } from "@/api/types/integrations"
 
 const app = useAppStore()
 const { debug } = storeToRefs(app)

@@ -7,8 +7,7 @@ import {
   stopLoxone,
 } from "@/api/loxone"
 import InstanceEditDialog from "./InstanceEditDialog.vue"
-import type { LoxoneInstance } from "@/api/types/loxone"
-import LoxoneInstanceState from "./LoxoneInstanceState.vue"
+import { LoxoneInstanceState, type LoxoneInstance } from "@/api/types/loxone"
 
 const { instance } = defineProps<{ instance: LoxoneInstance }>()
 const confirmDelete = ref(false)

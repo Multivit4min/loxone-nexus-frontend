@@ -4,8 +4,7 @@ import { computed, ref } from "vue"
 import LoxoneVariableValue from "./LoxoneVariableValue.vue"
 import { useAppStore } from "@/store/app"
 import { storeToRefs } from "pinia"
-import { LoxoneVariableType, type LoxoneInstance, type LoxoneVariable } from "@/api/types/loxone"
-import LoxoneInstanceState from "./LoxoneInstanceState.vue"
+import { LoxoneInstanceState, LoxoneVariableType, type LoxoneInstance, type LoxoneVariable } from "@/api/types/loxone"
 import { VariableDirection } from "@/api/types/variable"
 
 const { instance } = defineProps<{ instance: LoxoneInstance }>()

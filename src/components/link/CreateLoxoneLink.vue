@@ -3,10 +3,11 @@ import { createLink } from "@/api/link"
 import { useLoxoneStore } from "@/store/loxone"
 import { computed } from "vue"
 import VariableListSimple from "../../views/main/loxone/components/VariableListSimple.vue"
-import { VariableDirection, type LoxoneVariable } from "@/api/loxone"
 import { useAppStore } from "@/store/app"
 import { storeToRefs } from "pinia"
-import type { IntegrationVariable } from "@/api/integration"
+import type { IntegrationVariable } from "@/api/types/integrations"
+import { VariableDirection } from "@/api/types/variable"
+import type { LoxoneVariable } from "@/api/types/loxone"
 
 const app = useAppStore()
 const { debug } = storeToRefs(app)

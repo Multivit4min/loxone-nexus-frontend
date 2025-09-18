@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { VariableDirection } from "@/api/loxone"
 import type { QTableProps } from "quasar"
-import type { IntegrationVariable } from "@/api/integration"
 import { useIntegrationStore } from "@/store/integration"
 import { meta } from "../views/main/integration/components/config"
+import type { IntegrationVariable } from "@/api/types/integrations";
+import { VariableDirection } from "@/api/types/variable";
 
 const store = useIntegrationStore()
 
