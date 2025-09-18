@@ -1,0 +1,1 @@
+export const GITHUB_URL = "https://github.com/Multivit4min/loxone-nexus"
