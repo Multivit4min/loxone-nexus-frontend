@@ -1,7 +1,9 @@
 import { defineStore } from "pinia"
-import { fetchAll, VariableDirection, type LoxoneInstance, type LoxoneVariable } from "@/api/loxone"
-import type { Link } from "@/api/link"
+import { fetchAll } from "@/api/loxone"
 import type { ZodObject } from "@/components/zod/type"
+import type { LoxoneInstance, LoxoneVariable } from "@/api/types/loxone"
+import type { VariableLink } from "@/api/types/link"
+import { VariableDirection } from "@/api/types/variable"
 
 export type LoxoneLinkList = LoxoneLinkEntry[]
 export type LoxoneLinkEntry = {
@@ -31,7 +33,7 @@ export const useLoxoneStore = defineStore("loxone", {
       }
     },
     getVariablesByLinks(state) {
-      return (links: Link[]) => {
+      return (links: VariableLink[]) => {
         const variables = this.getVariablesById(links.map(link => link.loxoneVariableId))
         return links.map(link => ({
           ...link,

@@ -1,13 +1,13 @@
 import { defineStore } from "pinia"
-import { apiConfig, completeSetup, config, type ApiConfig, type Config, type SetupData } from "@/api/config"
+import { apiConfig, completeSetup, config, type ApiConfigResponse, type ConfigResponse, type SetupDataProps } from "@/api/config"
 import { useAuthStore } from "./auth"
 import router from "@/router"
 
 
 export const useConfigStore = defineStore("config", {
   state: () => ({
-    general: null as ApiConfig|null,
-    config: null as Config|null,
+    general: null as ApiConfigResponse|null,
+    config: null as ConfigResponse|null,
     initialized: false
   }),
   actions: {
@@ -20,7 +20,7 @@ export const useConfigStore = defineStore("config", {
       this.initialized = true
       return this.general
     },
-    async setup(setup: SetupData) {
+    async setup(setup: SetupDataProps) {
       const { token } = await completeSetup(setup)
       const auth = useAuthStore()
       await auth.updateToken(token)

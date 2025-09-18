@@ -1,8 +1,9 @@
 <script setup lang="ts">
-  import { type User, type UserUpdateProps } from "@/api/users"
+  import { type UserUpdateProps } from "@/api/users"
   import { computed } from "vue"
   import { Notify } from "quasar"
   import { useUserStore } from "@/store/user"
+import type { User } from "@/api/types/user"
   
   const store = useUserStore()
 

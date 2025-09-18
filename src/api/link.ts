@@ -1,10 +1,5 @@
 import { api } from "./client"
-
-export type Link = {
-  id: number
-  integrationVariableId: number
-  loxoneVariableId: number
-}
+import type { VariableLink } from "./types/link"
 
 export type LinkProps = {
   integrationVariable: number
@@ -12,7 +7,7 @@ export type LinkProps = {
 }
 
 export const createLink = (props: LinkProps) => {
-  return api.post<Link>("/api/link", props)
+  return api.post<VariableLink>("/api/link", props)
 }
 
 export const removeLink = (id: number) => {

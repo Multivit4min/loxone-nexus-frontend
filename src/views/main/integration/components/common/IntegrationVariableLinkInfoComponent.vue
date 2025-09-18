@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  import type { IntegrationVariable } from "@/api/integration"
-import { removeLink } from "@/api/link"
-import { useLoxoneStore } from "@/store/loxone"
-import { computed } from "vue"
+  import { removeLink } from "@/api/link"
+import type { IntegrationVariable } from "@/api/types/integrations"
+  import { useLoxoneStore } from "@/store/loxone"
+  import { computed } from "vue"
   import { RouterLink } from "vue-router"
 
   const loxone = useLoxoneStore()

@@ -1,5 +1,4 @@
-import type { IntegrationActions } from "@/api/integration"
-import type { ServiceResponse } from "./VariableTree.vue"
+import type { IntegrationActions } from "@/api/types/integrations"
 
 export type HomeAssistantState = {
   entityId: string

@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import type { LoxoneVariable, LoxoneInstance } from "@/api/loxone"
 import { ref } from "vue"
-import { deleteVariable, updateVariable, VariableType, forceVariable, VariableDirection } from "@/api/loxone"
+import { deleteVariable, updateVariable, forceVariable } from "@/api/loxone"
 import VariableListSimple from "./VariableListSimple.vue"
 import CreateIntegrationLink from "@/components/link/CreateIntegrationLink.vue"
+import { LoxoneVariableType, type LoxoneInstance, type LoxoneVariable } from "@/api/types/loxone";
+import { VariableDirection } from "@/api/types/variable";
 
 const { instance } = defineProps<{ instance: LoxoneInstance }>()
 
@@ -66,14 +67,14 @@ const openLinkDialog = (v: LoxoneVariable) => {
             <q-card-section>
               <div class="text-h6">Force Variable {{ forcedVariable!.label || forcedVariable!.packetId }}</div>
             </q-card-section>
-            <q-card-section v-if="forcedVariable!.type === VariableType.DIGITAL">
+            <q-card-section v-if="forcedVariable!.type === LoxoneVariableType.DIGITAL">
               <q-toggle
                 v-model="forcedValue"
                 color="green"
                 :label="forcedValue ? 'true' : 'false'"
               />
             </q-card-section>
-            <q-card-section v-else-if="forcedVariable!.type === VariableType.ANALOG">
+            <q-card-section v-else-if="forcedVariable!.type === LoxoneVariableType.ANALOG">
               <q-input outlined v-model="forcedValue" label="force to" type="number" />
             </q-card-section>
             <q-card-section v-else>

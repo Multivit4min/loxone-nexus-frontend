@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { type Integration, createVariable } from "@/api/integration"
+import { createVariable } from "@/api/integration"
 import { ref } from "vue"
-import { VariableDirection } from "@/api/loxone"
 import FormConfig from "@/components/zod/FormConfig.vue"
+import type { Integration } from "@/api/types/integrations"
+import { VariableDirection } from "@/api/types/variable";
 
 const { integration } = defineProps<{
   integration: Integration

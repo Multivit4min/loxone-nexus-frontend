@@ -1,12 +1,6 @@
 import { api } from "./client"
+import type { User, Users } from "./types/user"
 
-export type Users = User[]
-export type User = {
-  id: number
-  username: string
-  createdAt: string
-  updatedAt: string
-}
 
 export const getUsers = () => {
   return api.get<Users>("/api/users")

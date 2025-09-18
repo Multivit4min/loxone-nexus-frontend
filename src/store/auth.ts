@@ -1,10 +1,11 @@
-import { login, whoami, type User } from "@/api/auth"
+import { login, whoami } from "@/api/auth"
 import { defineStore } from "pinia"
 import router from "@/router"
+import type { AuthUser } from "@/api/types/user"
 
 export const useAuthStore = defineStore("auth", {
   state: () => ({
-    user: null as User|null,
+    user: null as AuthUser|null,
     isAuthenticated: false,
     initialized: false
   }),

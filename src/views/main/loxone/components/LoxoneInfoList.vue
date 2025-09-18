@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useConfigStore } from "@/store/config"
 import KeyValueItem from "@/components/KeyValueItem.vue"
-import type { LoxoneInstance } from "@/api/loxone"
 import ConnectionGuide from "./ConnectionGuide.vue"
-import { ref } from "vue";
+import { ref } from "vue"
+import type { LoxoneInstance } from "@/api/types/loxone"
 
 const { instance } = defineProps<{ instance: LoxoneInstance }>()
 const config = useConfigStore()

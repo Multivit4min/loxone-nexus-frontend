@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import type { QTableProps } from "quasar"
-import { deleteIntegrationVariable, type IntegrationVariable, type Integration, updateVariable } from "@/api/integration"
+import { deleteIntegrationVariable, updateVariable } from "@/api/integration"
 import { ref } from "vue"
 import CreateLoxoneLink from "@/components/link/CreateLoxoneLink.vue"
-import { VariableDirection } from "@/api/loxone"
 import IntegrationVariableList from "../common/IntegrationVariableLinkInfoComponent.vue"
 import router from "@/router"
 import FormConfig from "@/components/zod/FormConfig.vue"
 import type { ZodObject } from "@/components/zod/type"
 import CreateVariableDialog from "./CreateVariableDialog.vue"
+import type { Integration, IntegrationVariable } from "@/api/types/integrations"
+import { VariableDirection } from "@/api/types/variable"
 
 const { integration, disableFeatures } = defineProps<{
   integration: Integration,

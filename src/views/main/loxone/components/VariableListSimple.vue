@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { LoxoneVariable } from "@/api/loxone"
-import { VariableDirection } from "@/api/loxone"
 import type { QTableProps } from "quasar"
 import LoxoneVariableLinkInfoComponent from "./LoxoneVariableLinkInfoComponent.vue"
 import LoxoneVariableValue from "./LoxoneVariableValue.vue"
+import type { LoxoneVariable } from "@/api/types/loxone"
+import { VariableDirection } from "@/api/types/variable"
 
 const { variables, ignoreFields } = defineProps<{
   variables: LoxoneVariable[]

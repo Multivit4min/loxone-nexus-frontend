@@ -1,64 +1,8 @@
 import type { ZodObject } from "@/components/zod/type"
 import { api } from "./client"
+import type { VariableDirection } from "./types/variable"
+import type { LoxoneInstance, LoxoneVariableType } from "./types/loxone"
 
-
-export type LoxoneInstance = {
-  id: number
-  label: string
-  host: string
-  port: number
-  listenPort: number
-  active: boolean
-  state: LoxoneInstanceState
-  ownId: string
-  remoteId: string
-  variables: LoxoneVariable[]
-  additionalInputs: LoxoneVariable[]
-}
-
-export type LoxoneVariable = {
-  id: number
-  label: string|null
-  direction: VariableDirection
-  packetId: string
-  loxoneId: number
-  type: VariableType
-  value: any
-  forced: boolean
-  forcedValue: string|null
-  suffix: string|null
-  links?: VariableLink[]
-}
-
-export type VariableLink = {
-  id: number
-  loxoneVariableId: number
-  integrationVariableId: number
-}
-
-export enum VariableDirection {
-  INPUT = "INPUT",
-  OUTPUT = "OUTPUT"
-}
-
-export enum LoxoneInstanceState {
-  INIT = 0,
-  STOPPED = 1,
-  STOPPING = 2,
-  STARTING = 3,
-  RUNNING = 4,
-  ERROR = 5
-}
-
-export enum VariableType {
-  DIGITAL = 0x00,
-  ANALOG = 0x01,
-  TEXT = 0x02,
-  T5 = 0x03,
-  SmartActuatorRGBW = 0x04,
-  SmartActuatorSingleChannel = 0x05,
-  SmartActuatorTunableWhite = 0x06
-}
 
 export type LoxoneResponse = {
   schema: ZodObject
@@ -69,7 +13,7 @@ export const fetchAll = () => {
   return api.get<LoxoneResponse>("/api/loxone")
 }
 
-export type LoxoneConfig = {
+export type LoxoneConfigProps = {
   label: string
   host: string
   port: number
@@ -78,11 +22,11 @@ export type LoxoneConfig = {
   ownId: string
 }
 
-export const addLoxone = (props: LoxoneConfig) => {
+export const addLoxone = (props: LoxoneConfigProps) => {
   return api.post("/api/loxone", props)
 }
 
-export const updateLoxone = (id: number, props: Partial<LoxoneConfig>) => {
+export const updateLoxone = (id: number, props: Partial<LoxoneConfigProps>) => {
   return api.patch(`/api/loxone/${id}`, props)
 }
 
@@ -102,7 +46,7 @@ export type CreateVariableProps = {
   packetId: string
   label?: string
   direction: VariableDirection
-  type: VariableType
+  type: LoxoneVariableType
   suffix?: string
   description?: string
 }

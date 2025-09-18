@@ -1,25 +1,25 @@
-import type { User } from "./auth"
 import { api } from "./client"
+import type { AuthUser } from "./types/user"
 
-export type Config = {
+export type ConfigResponse = {
   localAddress: string
 }
 
 export const config = () => {
-  return api.get<Config>("/api/config")
+  return api.get<ConfigResponse>("/api/config")
 }
 
-export type ApiConfig = {
+export type ApiConfigResponse = {
   setup: boolean
 }
 export const apiConfig = () => {
-  return api.get<ApiConfig>("/api")
+  return api.get<ApiConfigResponse>("/api")
 }
 
-export type SetupData = {
+export type SetupDataProps = {
   username: string
   password: string
 }
-export const completeSetup = (data: SetupData) => {
-  return api.post<{ user: User, token: string }>("/api/setup", data)
+export const completeSetup = (data: SetupDataProps) => {
+  return api.post<{ user: AuthUser, token: string }>("/api/setup", data)
 }

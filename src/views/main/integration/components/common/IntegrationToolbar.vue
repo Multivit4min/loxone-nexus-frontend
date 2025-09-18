@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { deleteIntegration, updateIntegration, type Integration, type IntegrationUpdate } from "@/api/integration"
+import { deleteIntegration, updateIntegration, type IntegrationUpdate } from "@/api/integration"
 import { ref } from "vue"
 import IntegrationEditDialog from "./IntegrationEditDialog.vue"
 import { meta } from "../config"
+import type { Integration } from "@/api/types/integrations"
 
 const { integration } = defineProps<{ integration: Integration }>()
 const confirmDelete = ref(false)

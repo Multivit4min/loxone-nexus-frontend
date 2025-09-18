@@ -1,4 +1,5 @@
-import { createUser, getUsers, removeUser, updateUser, type UserCreateProps, type Users, type UserUpdateProps } from "@/api/users"
+import type { Users } from "@/api/types/user"
+import { createUser, getUsers, removeUser, updateUser, type UserCreateProps, type UserUpdateProps } from "@/api/users"
 import { defineStore } from "pinia"
 
 export const useUserStore = defineStore("user", {

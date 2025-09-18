@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useUserStore } from "@/store/user"
 import { storeToRefs } from "pinia"
-import { type User } from "@/api/users"
+import { type User } from "@/api/types/user"
 
   const user = useUserStore()
   const { users } = storeToRefs(user)

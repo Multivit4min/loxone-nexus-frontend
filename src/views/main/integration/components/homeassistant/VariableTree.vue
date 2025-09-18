@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue"
-import { createVariable, getInternalVariables, type Integration } from "@/api/integration"
-import { TreeGenerator, type HomeAssistantAction, type HomeAssistantInput, type HomeAssistantState, type Node, type Tree } from "./TreeGenerator";
-import { VariableDirection } from "@/api/loxone";
+import { createVariable, getInternalVariables } from "@/api/integration"
+import { TreeGenerator, type HomeAssistantAction, type HomeAssistantInput, type HomeAssistantState, type Node, type Tree } from "./TreeGenerator"
+import type { Integration } from "@/api/types/integrations"
+import { VariableDirection } from "@/api/types/variable"
 
 const { integration } = defineProps<{ integration: Integration, filter?: string }>()
 

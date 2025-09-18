@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import LoxoneInfoList from "./LoxoneInfoList.vue"
 import InstanceStateToolbar from "./InstanceStateToolbar.vue"
-import type { LoxoneInstance } from "@/api/loxone"
+import type { LoxoneInstance } from "@/api/types/loxone"
 
 const { instance } = defineProps<{ instance: LoxoneInstance }>()
 

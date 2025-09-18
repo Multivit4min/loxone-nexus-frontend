@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { createVariable, VariableDirection, type LoxoneVariable } from "@/api/loxone"
-import { LoxoneInstanceState, VariableType, type LoxoneInstance } from "@/api/loxone"
+import { createVariable } from "@/api/loxone"
 import { computed, ref } from "vue"
 import LoxoneVariableValue from "./LoxoneVariableValue.vue"
 import { useAppStore } from "@/store/app"
 import { storeToRefs } from "pinia"
+import { LoxoneVariableType, type LoxoneInstance, type LoxoneVariable } from "@/api/types/loxone"
+import LoxoneInstanceState from "./LoxoneInstanceState.vue"
+import { VariableDirection } from "@/api/types/variable"
 
 const { instance } = defineProps<{ instance: LoxoneInstance }>()
 const app = useAppStore()
@@ -24,16 +26,16 @@ const running = computed(() => {
 
 const modelOptions = [{
   label: "ANALOG",
-  value: VariableType.ANALOG
+  value: LoxoneVariableType.ANALOG
 }, {
   label: "DIGITAL",
-  value: VariableType.DIGITAL
+  value: LoxoneVariableType.DIGITAL
 }, {
   label: "TEXT",
-  value: VariableType.TEXT
+  value: LoxoneVariableType.TEXT
 }, {
   label: "SmartActuatorSingleChannel",
-  value: VariableType.SmartActuatorSingleChannel
+  value: LoxoneVariableType.SmartActuatorSingleChannel
 }]
 
 function getTypeLabel(value: number) {
@@ -44,7 +46,7 @@ const initialVariable = {
   packetId: "",
   label: "",
   direction: VariableDirection.OUTPUT,
-  type: VariableType.DIGITAL,
+  type: LoxoneVariableType.DIGITAL,
   suffix: "",
   description: ""
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { type Integration } from "@/api/integration"
 import VariableTree from "./VariableTree.vue"
 import IntegrationVariableList from "../common/IntegrationVariableList.vue"
+import type { Integration } from "@/api/types/integrations"
 
 const { integration } = defineProps<{ integration: Integration }>()
 </script>

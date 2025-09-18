@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { LoxoneInstance } from "@/api/loxone"
-import { useConfigStore } from "@/store/config";
+import type { LoxoneInstance } from "@/api/types/loxone"
+import { useConfigStore } from "@/store/config"
 import { useTemplateRef } from "vue"
 
 const { instance } = defineProps<{ instance: LoxoneInstance }>()

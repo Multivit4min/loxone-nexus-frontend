@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import router from "@/router"
-import { computed, ref } from "vue"
+import { computed } from "vue"
 
 const props = defineProps<{
   subtitle?: string

@@ -1,8 +1,9 @@
 import type { ZodConfig } from "@/components/zod/type"
 import { api } from "./client"
-import type { VariableDirection, VariableLink } from "./loxone"
+import type { VariableDirection } from "./types/variable"
+import type { Integration, Integrations } from "./types/integrations"
 
-export type IntegrationConfig = {
+export type IntegrationConfigResponse = {
   commonSchema: ZodConfig
   integrations: IntegrationConfigEntry[]
 }
@@ -11,79 +12,6 @@ export type IntegrationConfigEntry = {
   name: string
   icon: string
   config: ZodConfig
-}
-
-export type HomeAssistantIntegration = Integration<null>
-
-
-export type SonosZone = {
-  SerialNumber: string
-  SoftwareVersion: string
-  DisplaySoftwareVersion: number
-  HardwareVersion: string
-  IPAddress: string
-  MACAddress: string
-  CopyrightInfo: string
-  HTAudioIn: number
-  Flags: number
-}
-export type SonosState = {
-  mediaInfo: {
-    NrTracks: number,
-    MediaDuration: "NOT_IMPLEMENTED",
-    PlayMedium: string,
-    RecordMedium: "NOT_IMPLEMENTED",
-    WriteStatus: "NOT_IMPLEMENTED"
-  },
-  muted: false,
-  positionInfo: {
-    Track: 0,
-    TrackDuration: string,
-    RelTime: string,
-    AbsTime: "NOT_IMPLEMENTED",
-    RelCount: number,
-    AbsCount: number
-  },
-  transportState: string,
-  volume: number
-}
-export type SonosIntegration = Integration<{
-  zone?: SonosZone
-  state?: SonosState
-}>
-
-export type Integrations = Integration[]
-export type Integration<T = any> = {
-  id: number
-  label: string
-  type: string
-  version: number
-  config: Record<string, any>
-  variables: IntegrationVariables
-  specific: T
-  configSchema: ZodConfig
-  outputVariableSchema: ZodConfig
-  inputVariableSchema: ZodConfig
-  actions: IntegrationActions
-}
-
-export type IntegrationActions = IntegrationAction[]
-export type IntegrationAction = {
-  id: string
-  description: string
-  schema: ZodConfig
-}
-
-export type IntegrationVariables = IntegrationVariable[]
-
-export type IntegrationVariable<T = any> = {
-  id: number
-  integrationId: number
-  label: string
-  direction: "INPUT"|"OUTPUT"
-  value: string|null
-  config: T
-  links?: VariableLink[]
 }
 
 export type IntegrationCreate = {
@@ -107,15 +35,15 @@ export const createIntegration = (data: IntegrationCreate) => {
 }
 
 export const getConfig = () => {
-  return api.get<IntegrationConfig>("/api/integration/config")
+  return api.get<IntegrationConfigResponse>("/api/integration/config")
 } 
 
 export const deleteIntegration = (id: number) => {
-  return api.delete<IntegrationConfig>(`/api/integration/${id}`)
+  return api.delete<IntegrationConfigResponse>(`/api/integration/${id}`)
 }
 
 export const updateIntegration = (id: number, data: Omit<IntegrationUpdate, "name">) => {
-  return api.patch<IntegrationConfig>(`/api/integration/${id}`, data)
+  return api.patch<IntegrationConfigResponse>(`/api/integration/${id}`, data)
 }
 
 export const getInternalVariables = <T>(id: number) => {

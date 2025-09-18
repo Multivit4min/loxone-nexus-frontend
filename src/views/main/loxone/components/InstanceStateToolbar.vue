@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import { LoxoneInstanceState, updateLoxone, type LoxoneInstance } from "@/api/loxone"
+import { updateLoxone } from "@/api/loxone"
 import { computed, ref } from "vue"
 import {
   deleteInstance,
   startLoxone,
   stopLoxone,
 } from "@/api/loxone"
-import InstanceEditDialog from "./InstanceEditDialog.vue";
+import InstanceEditDialog from "./InstanceEditDialog.vue"
+import type { LoxoneInstance } from "@/api/types/loxone"
+import LoxoneInstanceState from "./LoxoneInstanceState.vue"
 
 const { instance } = defineProps<{ instance: LoxoneInstance }>()
 const confirmDelete = ref(false)

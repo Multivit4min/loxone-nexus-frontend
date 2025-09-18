@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type SonosIntegration } from "@/api/integration"
+import type { SonosIntegration } from "@/api/types/integrations/sonos"
 import IntegrationVariableList from "../common/IntegrationVariableList.vue"
 
 const { integration } = defineProps<{ integration: SonosIntegration }>()

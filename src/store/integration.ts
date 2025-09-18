@@ -2,13 +2,11 @@ import { defineStore } from "pinia"
 import {
   fetchAllIntegrations,
   getConfig,
-  type Integration,
-  type IntegrationConfig,
-  type Integrations,
-  type IntegrationVariable
+  type IntegrationConfigResponse
 } from "@/api/integration"
-import { VariableDirection } from "@/api/loxone"
-import type { Link } from "@/api/link"
+import type { Integration, Integrations, IntegrationVariable } from "@/api/types/integrations"
+import { VariableDirection } from "@/api/types/variable"
+import type { VariableLink } from "@/api/types/link"
 
 export type IntegrationLinkList = IntegrationLinkEntry[]
 export type IntegrationLinkEntry = {
@@ -22,7 +20,7 @@ export const useIntegrationStore = defineStore("integration", {
   state: () => ({
     initialized: false,
     integrations: [] as Integrations,
-    config: { commonSchema: null as any, integrations: [] } as IntegrationConfig
+    config: { commonSchema: null as any, integrations: [] } as IntegrationConfigResponse
   }),
   getters: {
     getLinks: (store) => {
@@ -47,7 +45,7 @@ export const useIntegrationStore = defineStore("integration", {
       }
     },
     getVariablesByLinks(state) {
-      return (links: Link[]) => {
+      return (links: VariableLink[]) => {
         const variables = this.getVariablesById(links.map(link => link.integrationVariableId))
         return links.map(link => ({
           ...link,

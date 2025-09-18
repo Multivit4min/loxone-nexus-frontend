@@ -2,7 +2,7 @@
 import { useAppStore } from "@/store/app"
 import { useUserStore } from "@/store/user"
 import { storeToRefs } from "pinia"
-import { type User } from "@/api/users"
+import { type User } from "@/api/types/user"
 import { ref } from "vue"
 import UserList from "./components/UserList.vue"
 import UserDialog from "./components/UserDialog.vue"
