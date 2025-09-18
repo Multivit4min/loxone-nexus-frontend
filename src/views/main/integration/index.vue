@@ -3,9 +3,9 @@ import router from "@/router"
 import { storeToRefs } from "pinia"
 import { computed } from "vue"
 import { useIntegrationStore } from "@/store/integration"
-import IntegrationToolbar from "@/components/integrations/common/IntegrationToolbar.vue"
-import HomeAssistantIntegration from "@/components/integrations/homeassistant/HomeAssistantIntegration.vue"
-import SonosIntegration from "@/components/integrations/sonos/SonosIntegration.vue"
+import IntegrationToolbar from "./components/common/IntegrationToolbar.vue"
+import HomeAssistantIntegration from "@/views/main/integration/components/homeassistant/HomeAssistantIntegration.vue"
+import SonosIntegration from "./components/sonos/SonosIntegration.vue"
 import { useAppStore } from "@/store/app"
 
 const store = useIntegrationStore()

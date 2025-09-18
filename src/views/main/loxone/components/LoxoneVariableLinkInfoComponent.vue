@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { removeLink } from "@/api/link";
 import type { LoxoneVariable } from "@/api/loxone"
-import { meta } from "@/components/integrations/config";
+import { meta } from "@/views/main/integration/components/config";
   import { useIntegrationStore } from "@/store/integration"
 import { computed } from "vue";
   import { RouterLink } from "vue-router"

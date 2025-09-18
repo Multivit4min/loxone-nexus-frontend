@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ZodConfig } from "@/components/zod/type"
-import FormConfig from "../../zod/FormConfig.vue"
+import FormConfig from "@/components/zod/FormConfig.vue"
 
 
 export interface EditIntegrationModel {

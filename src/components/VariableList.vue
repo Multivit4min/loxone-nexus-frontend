@@ -3,7 +3,7 @@ import { VariableDirection } from "@/api/loxone"
 import type { QTableProps } from "quasar"
 import type { IntegrationVariable } from "@/api/integration"
 import { useIntegrationStore } from "@/store/integration"
-import { meta } from "./integrations/config"
+import { meta } from "../views/main/integration/components/config"
 
 const store = useIntegrationStore()
 
