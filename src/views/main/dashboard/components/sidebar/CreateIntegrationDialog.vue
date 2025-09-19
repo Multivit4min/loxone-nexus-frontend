@@ -28,7 +28,7 @@ const addIntegration = async () => {
     selectKey="type"
     @submit="addIntegration()"
   >
-    <template v-slot:HomeAssistant.ws>
+    <template v-slot:$zod[HomeAssistant.ws]>
       <q-card-section>
         URL Format:
         <ul>
@@ -37,13 +37,13 @@ const addIntegration = async () => {
         </ul>
       </q-card-section>
     </template>
-    <template v-slot:HomeAssistant.token>
+    <template v-slot:$zod[HomeAssistant.token]>
       <q-card-section>
         Create this token via your HomeAssistant Webinterface
         <pre>HomeAssistant Webinterface > [Your Username] > Security > Long-lived access tokens</pre>
       </q-card-section>
     </template>
-    <template v-slot:Sonos.address>
+    <template v-slot:$zod[Sonos.address]>
       <q-card-section>
         IPv4 Address of your Speaker
       </q-card-section>
