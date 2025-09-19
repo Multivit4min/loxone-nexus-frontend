@@ -1,4 +1,4 @@
-import type { Integration, Integrations, IntegrationVariable } from "@/api/integration"
+import type { Integration, Integrations, IntegrationVariable } from "@/api/types/integrations"
 import { useIntegrationStore } from "@/store/integration"
 import { useLoxoneStore } from "@/store/loxone"
 import { io } from "socket.io-client"

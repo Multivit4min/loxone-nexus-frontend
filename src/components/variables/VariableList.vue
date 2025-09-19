@@ -13,8 +13,12 @@ import type { Integration } from "@/api/types/integrations"
 import { computed } from "vue"
 import CreateIntegrationVariableAction from "./fields/actions/CreateIntegrationVariableAction.vue"
 
+export interface IVariableInterface {
+  variables: VariableTypes[]
+}
+
 const { instance, disable } = defineProps<{
-  instance: LoxoneInstance|Integration
+  instance: IVariableInterface|LoxoneInstance|Integration
   disable?: ("direction"|"source"|"label"|"type"|"value"|"link"|"actions"|"create"|"action.edit")[]
 }>()
 

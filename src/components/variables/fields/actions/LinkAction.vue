@@ -16,9 +16,9 @@ const linkable = ref<VariableTypes[]>([])
 const openLinkDialog = (v: VariableTypes) => {
   linkable.value = (() => {
     const direction = variable.direction === VariableDirection.INPUT ? VariableDirection.OUTPUT : VariableDirection.INPUT
-    if ('loxoneId' in variable) return integrationStore.getVariableLinks(direction)
-    if ('integrationId' in variable) return loxoneStore.getVariableLinks(direction)
-    return []
+    if ('loxoneId' in variable) return integrationStore.getVariableLinks(direction) as VariableTypes[]
+    if ('integrationId' in variable) return loxoneStore.getVariableLinks(direction) as VariableTypes[]
+    return [] as VariableTypes[]
   })()
   openDialog.value = true
 }
@@ -50,7 +50,10 @@ const linkWith = async (v: VariableTypes) => {
         <span class="q-ml-sm">Link {{ variable.label }}</span>
       </q-card-section>
       <q-card-section>
-        <VariableList :variables="linkable" :ignore-fields="['direction', 'link']">
+        <VariableList
+          :instance="{ variables: linkable }"
+          :disable="['direction', 'link', 'create']"
+        >
           <template v-slot:actions="props">
             <q-btn flat size="sm" round color="blue" @click="linkWith(props.variable)" icon="mdi-link-plus" class="p-pr-lg" />
           </template>

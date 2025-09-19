@@ -19,7 +19,8 @@ const options = computed(() => {
   return zod.anyOf.map(entries => {
     if (entries.type !== "object") return console.error(`entries.type ${entries.type} not supported expected object`)
     const entry = entries.properties[selectKey]
-    if (entry.type !== "string") return console.error(`expected entry.type to be "string" but got ${entry.type}`, entry)
+    if (!('type' in entry) || entry.type !== "string")
+      return console.error(`expected entry.type to be "string" but got ${(entry as any)["type"]}`, entry)
     if (!entry.const) return console.error(`expected entry.const to exist`, entry)
     return {
       label: entry.description || entry.const,
@@ -35,6 +36,7 @@ const zodObject = computed<ZodObject|undefined>(() => {
   return zod.anyOf.find(entries => {
     if (entries.type !== "object") return console.error(`entries.type ${entries.type} not supported expected object`)
     return (
+      'type' in entries.properties[selectKey] &&
       entries.properties[selectKey].type === "string" &&
       entries.properties[selectKey].const === value
     )
