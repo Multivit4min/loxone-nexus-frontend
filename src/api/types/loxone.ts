@@ -27,7 +27,7 @@ export type LoxoneVariable = {
   forced: boolean
   forcedValue: string|null
   suffix: string|null
-  links?: VariableLink[]
+  links: VariableLink[]
 }
 
 export enum LoxoneInstanceState {

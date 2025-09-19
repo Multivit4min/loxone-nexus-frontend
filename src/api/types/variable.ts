@@ -1,3 +1,8 @@
+import type { IntegrationVariable } from "./integrations"
+import type { LoxoneVariable } from "./loxone"
+
+export type VariableTypes = IntegrationVariable|LoxoneVariable
+
 export type VariableValueData = 
   NullVariable|
   BooleanVariable|

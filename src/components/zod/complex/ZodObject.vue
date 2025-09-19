@@ -16,7 +16,7 @@ const { zod, ignore, id } = defineProps<{
 
 <template>
   <div>
-    <slot v-if="id" :name="`selected_${id}`"></slot>
+    <slot v-if="id" :name="`$zod[selected#${id}]`"></slot>
     <div v-for="(prop, key) in zod.properties">
       <ZodEntry
         :ignore="ignore"
@@ -27,7 +27,7 @@ const { zod, ignore, id } = defineProps<{
         v-model="model"
       >
         <template v-for="(slotFn, name) in $slots" v-slot:[name]="slotProps">
-          <slot :name="name" v-bind="slotProps"></slot>
+          <slot :name="<any>name" v-bind="slotProps"></slot>
         </template>
       </ZodEntry>
     </div>

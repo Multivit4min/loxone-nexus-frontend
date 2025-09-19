@@ -3,8 +3,8 @@ import { ref } from "vue"
 import { deleteVariable, updateVariable, forceVariable } from "@/api/loxone"
 import VariableListSimple from "./VariableListSimple.vue"
 import CreateIntegrationLink from "@/components/link/CreateIntegrationLink.vue"
-import { LoxoneVariableType, type LoxoneInstance, type LoxoneVariable } from "@/api/types/loxone";
-import { VariableDirection } from "@/api/types/variable";
+import { LoxoneVariableType, type LoxoneInstance, type LoxoneVariable } from "@/api/types/loxone"
+import { VariableDirection } from "@/api/types/variable"
 
 const { instance } = defineProps<{ instance: LoxoneInstance }>()
 

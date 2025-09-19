@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import VariableTree from "./VariableTree.vue"
-import IntegrationVariableList from "../common/IntegrationVariableList.vue"
 import type { Integration } from "@/api/types/integrations"
+import VariableList from "@/components/variables/VariableList.vue"
 
 const { integration } = defineProps<{ integration: Integration }>()
 </script>
@@ -15,7 +15,10 @@ const { integration } = defineProps<{ integration: Integration }>()
           <div class="text-subtitle2">data Points which have been added and can be sent to Loxone</div>
         </q-card-section>
         <q-card-section>
-          <IntegrationVariableList :integration="integration" :disableFeatures="['create', 'edit']" />
+          <VariableList
+            :instance="integration"
+            :disable="['source', 'create', 'action.edit']"
+          />
         </q-card-section>
       </q-card>
     </div>

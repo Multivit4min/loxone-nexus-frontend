@@ -4,8 +4,8 @@ import router from "@/router"
 import { storeToRefs } from "pinia"
 import { computed } from "vue"
 import { useAppStore } from "@/store/app"
-import LoxoneInstanceVariable from "./components/LoxoneInstanceVariable.vue"
-import LoxoneInstanceState from "./components/LoxoneInstanceState.vue"
+import LoxoneInstanceVariable from "./components/variables/LoxoneInstanceVariable.vue"
+import LoxoneInstanceState from "./components/info/LoxoneInstanceState.vue"
 
 const loxone = useLoxoneStore()
 const app = useAppStore()

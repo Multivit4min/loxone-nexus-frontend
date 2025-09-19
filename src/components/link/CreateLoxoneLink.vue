@@ -2,7 +2,7 @@
 import { createLink } from "@/api/link"
 import { useLoxoneStore } from "@/store/loxone"
 import { computed } from "vue"
-import VariableListSimple from "../../views/main/loxone/components/VariableListSimple.vue"
+import VariableListSimple from "../../views/main/loxone/components/variables/VariableListSimple.vue"
 import { useAppStore } from "@/store/app"
 import { storeToRefs } from "pinia"
 import type { IntegrationVariable } from "@/api/types/integrations"

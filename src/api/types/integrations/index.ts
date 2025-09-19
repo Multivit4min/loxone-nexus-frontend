@@ -1,5 +1,6 @@
 import type { ZodConfig } from "@/components/zod/type"
 import type { VariableLink } from "../link"
+import type { VariableDirection, VariableValueData } from "../variable"
 
 
 export type Integrations = Integration[]
@@ -22,10 +23,10 @@ export type IntegrationVariable<T = any> = {
   id: number
   integrationId: number
   label: string
-  direction: "INPUT"|"OUTPUT"
-  value: string|null
+  direction: VariableDirection
+  value?: VariableValueData
   config: T
-  links?: VariableLink[]
+  links: VariableLink[]
 }
 
 export type IntegrationActions = IntegrationAction[]

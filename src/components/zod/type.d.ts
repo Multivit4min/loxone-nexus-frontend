@@ -10,7 +10,7 @@ export type ZodAnyOfDataType = ZodObject|ZodString|ZodNumber
 export type ZodAnyOf = {
   description?: string
   default?: any
-  anyOf: ZodPrimitiveDataType[]
+  anyOf: ZodAnyOfDataType[]
 }
 
 export type ZodObject = {

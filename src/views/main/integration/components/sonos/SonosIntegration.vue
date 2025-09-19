@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { SonosIntegration } from "@/api/types/integrations/sonos"
-import IntegrationVariableList from "../common/IntegrationVariableList.vue"
+import VariableList from "@/components/variables/VariableList.vue"
 
 const { integration } = defineProps<{ integration: SonosIntegration }>()
 
@@ -21,13 +21,16 @@ const { integration } = defineProps<{ integration: SonosIntegration }>()
             </div>
           </q-card-section>
           <q-card-section>
-            <IntegrationVariableList :integration="integration">
-              <template v-slot:selected_volume>
+            <VariableList
+              :instance="integration"
+              :disable="['source']"
+            >
+              <template v-slot:$zod[input#volume]>
                 <q-card-section>
                   Use a Analog Input which has a value range from 0 to 100% to set the Volume
                 </q-card-section>
               </template>
-              <template v-slot:selected_notification>
+              <template v-slot:$zod[selected#notification]>
                 <q-card-section>
                   When Loxone Input is:
                   <ul>
@@ -36,14 +39,14 @@ const { integration } = defineProps<{ integration: SonosIntegration }>()
                   </ul> 
                 </q-card-section>
               </template>
-              <template v-slot:notification.uri>
+              <template v-slot:$zod[notification.uri]>
                 <q-card-section>
                   <div>Valid uris for playback</div>
                   <div><code>https://example.com/sonos/example.mp3</code> play from Web URL</div>
                   <div><code>x-file-cifs://127.0.0.1/sonos/example.mp3</code> play from NAS or other Network Storage</div>
                 </q-card-section>
               </template>
-            </IntegrationVariableList>
+            </VariableList>
           </q-card-section>
         </q-card>
       </div>

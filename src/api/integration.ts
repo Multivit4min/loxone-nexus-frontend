@@ -65,7 +65,7 @@ export type UpdateIntegrationVariableProps<T extends Record<string, any>> = {
   props: T
 }
 
-export const updateVariable = <T extends Record<string, any>>(id: number, variableId: string, props: UpdateIntegrationVariableProps<T>) => {
+export const updateVariable = <T extends Record<string, any>>(id: number, variableId: number, props: UpdateIntegrationVariableProps<T>) => {
   return api.patch(`/api/integration/${id}/variable/${variableId}`, props)
 }
 

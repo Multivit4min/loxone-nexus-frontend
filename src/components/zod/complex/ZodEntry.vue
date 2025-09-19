@@ -20,9 +20,9 @@ const { zod, ignore, id, required, name } = defineProps<{
 
 
 defineSlots<{
-  [key: `input_${string}`]: (props: { prop: Record<string, any>}) => void
-  [key: `selected_${string}`]: () => void
-  [key: `${string}.${string}`]: (props: { prop: Record<string, any>}) => void
+  [key: `$zod[input#${string}]`]: () => void
+  [key: `$zod[selected#${string}]`]: () => void
+  [key: `$zod[${string}.${string}]`]: (props: { prop: Record<string, any>}) => void
 }>()
 
 const isRequired = computed(() => (required||[]).includes(name))
@@ -32,8 +32,8 @@ const isIgnored = computed(() => (ignore||[]).includes(name))
 
 <template>
   <q-card-section v-if="zod && !isIgnored">
-    <slot :name="`input_${name}`" :prop="zod"></slot>
-    <slot v-if="id" :name="`${id}.${name}`" :prop="zod"></slot>
+    <slot v-if="id" :name="`$zod[input#${name}]`" :prop="zod"></slot>
+    <slot v-if="id" :name="`$zod[${id}.${name}]`" :prop="zod"></slot>
     <ZodAnyOf
       v-if="'anyOf' in zod"
       :zod="zod"

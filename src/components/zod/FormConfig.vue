@@ -3,6 +3,15 @@ import type { ZodAnyOf, ZodConfig, ZodObject } from "./type"
 import ZodObjectView from "./complex/ZodObject.vue"
 import ZodLiteralView from "./complex/ZodLiteral.vue"
 
+defineSlots<{
+  //general input description for specified name
+  [key: `$zod[input#${string}]`]: () => void
+  //create variable selected action description
+  [key: `$zod[selected#${string}]`]: () => void
+  //create variable selected action + field name description
+  [key: `$zod[${string}.${string}]`]: () => void
+}>()
+
 const model = defineModel<Record<string, any>>({
   required: true
 })
@@ -12,6 +21,8 @@ const { zod, ignore, selectKey } = defineProps<{
   ignore?: string[]
   selectKey?: string
 }>()
+
+
 </script>
 
 <template>
@@ -26,7 +37,7 @@ const { zod, ignore, selectKey } = defineProps<{
           v-model="model"
         >
           <template v-for="(slotFn, name) in $slots" v-slot:[name]="slotProps">
-            <slot :name="name" v-bind="slotProps"></slot>
+            <slot :name="<any>name" v-bind="slotProps"></slot>
           </template>
         </ZodLiteralView>
       </div>
@@ -39,7 +50,7 @@ const { zod, ignore, selectKey } = defineProps<{
         :ignore="ignore"
       >
         <template v-for="(slotFn, name) in $slots" v-slot:[name]="slotProps">
-          <slot :name="name" v-bind="slotProps"></slot>
+          <slot :name="<any>name" v-bind="slotProps"></slot>
         </template>
       </ZodObjectView>
     </div>
