@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { VariableValueType, type VariableTypes } from "@/api/types/variable"
+import { watch } from "vue"
 
 const { variable } = defineProps<{ variable: VariableTypes }>()
-
-let v = variable.value
-if (!v) v = { type: VariableValueType.NULL, value: null }
 
 const getDigitalIcon = () => {
   if (variable.value?.type !== VariableValueType.BOOLEAN) return "mdi-help"
@@ -15,35 +13,37 @@ const getVariabelValue = (variable: VariableTypes, value: any) => {
   return `${value}${"suffix" in variable && variable.suffix ? variable.suffix : ""}`
 }
 
+watch(() => variable, v => console.log(v.value))
 </script>
 
 <template>
-<label
-  :class="{
-    'text-info': variable.value?.type === VariableValueType.NUMBER,
-    'text-grey': variable.value?.type === VariableValueType.BOOLEAN,
-    'text-secondary': variable.value?.type === VariableValueType.STRING,
-    'text-yellow': variable.value?.type === VariableValueType.SMARTACTUATORSINGLECHANNEL
-  }"
->
-  <span v-if="v.type === VariableValueType.BOOLEAN">
-    <q-icon :name="getDigitalIcon()" size="sm" class="q-mr-xs" />
-    {{ getVariabelValue(variable, v.value ? 1 : 0) }}
+  <span v-if="variable.value">
+    <span v-if="variable.value.type === VariableValueType.BOOLEAN" class="text-grey">
+      <q-icon :name="getDigitalIcon()" size="sm" class="q-mr-xs" />
+      {{ getVariabelValue(variable, variable.value.value ? 1 : 0) }}
+    </span>
+    <span v-else-if="variable.value.type === VariableValueType.NUMBER" class="text-info">
+      {{ getVariabelValue(variable, variable.value.value) }}
+    </span>
+    <span v-else-if="variable.value.type === VariableValueType.STRING" class="text-secondary">
+      {{ getVariabelValue(variable, `"${variable.value.value}"`) }}
+    </span>
+    <span v-else-if="variable.value.type === VariableValueType.SMARTACTUATORSINGLECHANNEL" class="text-yellow">
+      <q-icon name="mdi-lightbulb-on-50" class="q-mr-xs" /> 
+      <label v-if="typeof variable.value === 'object' && variable.value.value !== null">{{ variable.value.value.channel }}% {{ variable.value.value.fadeTime }}s</label>
+    </span>
+    <span v-else-if="variable.value.type === VariableValueType.SMARTACTUATORRGBW">
+      <q-icon name="mdi-lightbulb-on" class="text-yellow q-mr-xs" /> 
+      <label class="text-red">{{ variable.value.value.red }}% </label>
+      <label class="text-green">{{ variable.value.value.green }}% </label>
+      <label class="text-blue">{{ variable.value.value.blue }}% </label>
+      <label class="text-yellow">{{ variable.value.value.white }}% </label>
+      <label class="text-yellow">{{ variable.value.value.fadeTime }}s </label>
+    </span>
+    <span v-else>
+      <pre>{{variable.value}}</pre>
+    </span>
   </span>
-  <span v-else-if="v.type === VariableValueType.NUMBER">
-    {{ getVariabelValue(variable, v.value) }}
-  </span>
-  <span v-else-if="v.type === VariableValueType.STRING">
-    {{ getVariabelValue(variable, `"${v.value}"`) }}
-  </span>
-  <span v-else-if="v.type === VariableValueType.SMARTACTUATORSINGLECHANNEL">
-    <q-icon name="mdi-lightbulb-on-50" /> 
-    <label v-if="typeof variable.value === 'object' && v.value !== null">{{ v.value.channel }}% {{ v.value.fadeTime }}s</label>
-  </span>
-  <span v-else>
-    <pre>{{v.value}}</pre>
-  </span>
-</label>
 </template>
 
 <style scoped></style>

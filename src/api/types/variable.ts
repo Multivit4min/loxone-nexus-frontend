@@ -8,7 +8,8 @@ export type VariableValueData =
   BooleanVariable|
   StringVariable|
   NumberVariable|
-  SmartActuatorSingleChannelVariable
+  SmartActuatorSingleChannelVariable|
+  SmartActuatorRGBWVariable
 
 export type VariableValue = 
   NullVariableValue|
@@ -22,7 +23,8 @@ export enum VariableValueType {
   BOOLEAN = "boolean",
   STRING = "string",
   NUMBER = "number",
-  SMARTACTUATORSINGLECHANNEL = "SmartActuatorSingleChannel"
+  SMARTACTUATORSINGLECHANNEL = "SmartActuatorSingleChannel",
+  SMARTACTUATORRGBW = "SmartActuatorRGBW"
 }
 
 export type NullVariableValue = null
@@ -59,6 +61,20 @@ export type SmartActuatorSingleChannelValue = {
 export type SmartActuatorSingleChannelVariable = {
   type: VariableValueType.SMARTACTUATORSINGLECHANNEL,
   value: SmartActuatorSingleChannelValue
+}
+
+
+export type SmartActuatorRGBWValue = {
+  red: number
+  green: number
+  blue: number
+  white: number
+  fadeTime: number
+  bits: number
+}
+export type SmartActuatorRGBWVariable = {
+  type: VariableValueType.SMARTACTUATORRGBW,
+  value: SmartActuatorRGBWValue
 }
 
 export enum VariableDirection {
