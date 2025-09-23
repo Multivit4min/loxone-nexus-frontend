@@ -1,6 +1,7 @@
 import type { Integration, Integrations, IntegrationVariable } from "@/api/types/integrations"
 import { useIntegrationStore } from "@/store/integration"
 import { useLoxoneStore } from "@/store/loxone"
+import { Notify } from "quasar"
 import { io } from "socket.io-client"
 
 export class Socket {
@@ -8,6 +9,7 @@ export class Socket {
   readonly socket = io({ transports: ["websocket"] })
   
   constructor() {
+    this.socket.io.on("close", this.onClose.bind(this))
     this.socket.io.on("reconnect", this.reconnect.bind(this))
     this.socket.on("instance:update.all", this.setInstances.bind(this))
     this.socket.on("instance:update.single", this.updateInstance.bind(this))
@@ -29,10 +31,23 @@ export class Socket {
     return this.socket.emitWithAck("auth:logout", {})
   }
 
+  private onClose() {
+    Notify.create({
+      color: "deep-orange",
+      message: "websocket disconnected from backend... reconnecting...",
+      icon: "mdi-alert"
+    })
+  }
+
   private async reconnect() {
     const token = localStorage.getItem("access_token")
     if (!token) return
     await this.socket.emitWithAck("auth:token", { token })
+    Notify.create({
+      color: "info",
+      message: "websocket reconnected to backend!",
+      icon: "mdi-check"
+    })
   }
 
   private setInstances({ instances }: any) {

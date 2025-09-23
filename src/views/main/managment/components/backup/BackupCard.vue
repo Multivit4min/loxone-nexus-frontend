@@ -2,7 +2,7 @@
 import { exportData } from "@/api/export"
 import { useQuasar } from "quasar"
 import { ref, useTemplateRef, watch } from "vue"
-import Importv1 from "./components/importv1.vue"
+import Importv1 from "./importv1.vue"
 
 const quasar = useQuasar()
 const backup = ref()

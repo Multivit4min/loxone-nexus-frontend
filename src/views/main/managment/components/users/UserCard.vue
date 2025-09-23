@@ -4,8 +4,8 @@ import { useUserStore } from "@/store/user"
 import { storeToRefs } from "pinia"
 import { type User } from "@/api/types/user"
 import { ref } from "vue"
-import UserList from "./components/UserList.vue"
-import UserDialog from "./components/UserDialog.vue"
+import UserList from "./UserList.vue"
+import UserDialog from "./UserDialog.vue"
 
   const app = useAppStore()
   const { debug } = storeToRefs(app)
@@ -30,7 +30,6 @@ import UserDialog from "./components/UserDialog.vue"
 </script>
 
 <template>
-  <div>
     <q-card flat bordered>
       <q-card-section>
         <div class="row items-center no-wrap">
@@ -56,7 +55,6 @@ import UserDialog from "./components/UserDialog.vue"
       :user="selectedUser"
       v-model:open="openDialog"
       />
-  </div>
 </template>
 
 <style scoped></style>

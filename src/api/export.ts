@@ -6,6 +6,5 @@ export const exportData = () => {
 }
 
 export const uploadBackup = (data: ExportResponse) => {
-  console.log(typeof data, data)
   return api.post("/api/export/upload", data)
 }
