@@ -8,6 +8,7 @@ import Loxone from "@/views/main/loxone/index.vue"
 import Users from "@/views/main/users/index.vue"
 import Integration from "@/views/main/integration/index.vue"
 import Home from "@/views/main/home/Index.vue"
+import Backup from "@/views/main/backup/index.vue"
 import Test from "@/views/main/Test.vue"
 
 
@@ -39,6 +40,10 @@ const routes = [{
     path: "users",
     name: "Users",
     component: Users
+  }, {
+    path: "backup",
+    name: "Backup",
+    component: Backup
   }, {
     path: "test",
     name: "Test",

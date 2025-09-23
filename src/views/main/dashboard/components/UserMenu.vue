@@ -24,13 +24,19 @@ watch(debugToggle, value => app.setDebug(value))
   icon="mdi-cogs"
   :label="user?.username"
 >
-  <q-menu transition-show="jump-down"  transition-hide="jump-up">
+  <q-menu transition-show="jump-down" transition-hide="jump-up">
     <q-list style="min-width: 100px">
       <q-item router-link to="/users">
         <q-item-section avatar>
           <q-icon name="mdi-account-group" />
         </q-item-section>
         <q-item-section>Users</q-item-section>
+      </q-item>
+      <q-item router-link to="/backup" exact>
+        <q-item-section avatar>
+          <q-icon name="mdi-export" />
+        </q-item-section>
+        <q-item-section>Backup</q-item-section>
       </q-item>
       <q-item router-link to="/" exact>
         <q-item-section avatar>
