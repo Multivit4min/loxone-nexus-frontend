@@ -33,6 +33,9 @@ const modelOptions = [{
   label: "TEXT",
   value: LoxoneVariableType.TEXT
 }, {
+  label: "SmartActuatorRGBW",
+  value: LoxoneVariableType.SmartActuatorRGBW
+}, {
   label: "SmartActuatorSingleChannel",
   value: LoxoneVariableType.SmartActuatorSingleChannel
 }]
