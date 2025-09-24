@@ -34,7 +34,7 @@ import { VariableDirection } from "@/api/types/variable"
     <q-btn round dense size="xs" color="primary" icon="mdi-plus" @click="openDialog = true" />
     <label
       :class="{
-        [endpoint.class!]: true,
+        [endpoint.className!]: true,
         'text-bold': true,
         'text-teal': true,
         'q-ml-sm': true

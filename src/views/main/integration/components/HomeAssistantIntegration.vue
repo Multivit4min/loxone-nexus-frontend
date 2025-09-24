@@ -29,9 +29,7 @@ const { integration } = defineProps<{ integration: Integration }>()
           <div class="text-h6">HomeAssistant Entities</div>
           <div class="text-subtitle2">available entries from HomeAssistant which can be added to the Variable List</div>
         </q-card-section>
-        <q-card-section>
-          <Tree :integration="integration" dense />
-        </q-card-section>
+        <Tree :integration="integration" dense />
       </q-card>
     </div>
   </div>

@@ -8,7 +8,7 @@ import type { TreeCategory } from "./tree.type"
 <template>
   <label
     :class="{
-      [category.class!]: true,
+      [category.className!]: true,
       'text-bold': category.bold
     }"
   >

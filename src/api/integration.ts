@@ -48,7 +48,7 @@ export const updateIntegration = (id: number, data: Omit<IntegrationUpdate, "nam
 }
 
 export const getIntegrationTree = (id: number) => {
-  return api.get<TreeProps>(`/api/integration/${id}/tree`)
+  return api.get(`/api/integration/${id}/tree`)
 }
 
 export const getInternalVariables = <T>(id: number) => {

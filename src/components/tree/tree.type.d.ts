@@ -7,9 +7,10 @@ export type InputTreeEntry = TreeCategory<InputTreeEndpoint>
 export type OutputTreeEntry = TreeCategory<OutputTreeEndpoint>
 
 export type TreeBase = {
+  id: string
   label: string
   comment?: string
-  class?: string
+  className?: string
   icon?: string
   bold?: boolean
   disabled?: boolean
