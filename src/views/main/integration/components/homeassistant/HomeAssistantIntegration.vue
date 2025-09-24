@@ -17,7 +17,7 @@ const { integration } = defineProps<{ integration: Integration }>()
         <q-card-section>
           <VariableList
             :instance="integration"
-            :disable="['source', 'create', 'action.edit']"
+            :disable="['source', 'create']"
           />
         </q-card-section>
       </q-card>

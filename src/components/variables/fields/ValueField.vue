@@ -38,7 +38,7 @@ const getVariabelValue = (variable: VariableTypes, value: any) => {
       <label class="text-yellow">{{ variable.value.value.white }}% </label>
       <label class="text-yellow">{{ variable.value.value.fadeTime }}s </label>
     </span>
-    <span v-else>
+    <span v-else-if="variable.value.type !== VariableValueType.NULL">
       <pre>{{variable.value}}</pre>
     </span>
   </span>

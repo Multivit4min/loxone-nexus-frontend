@@ -16,20 +16,32 @@ import OutputTreeEndpoint from "./OutputTreeEndpoint.vue"
     tree.value = data
   })
 
+  //generate uniques
+  const appendId = (nodes: QTreeNode[] & { label: string, path?: string }, path: string[] = []): QTreeNode[] => {
+    return nodes.map(node => {
+      path = [...path, node.label!]
+      node.path = path.join(".")
+      if ('children' in node) appendId(node.children as any, path)
+      return node
+    })
+  }
+
   const nodes = computed(() => {
     const { inputs, outputs } = tree.value
     let nodes: QTreeNode[] = []
     if (inputs && inputs.length > 0) nodes.push({
+      path: "inputs",
       label: "inputs",
       class: "text-amber",
       bold: true,
-      children: inputs
+      children: appendId(inputs as any, ["inputs"])
     })
     if (outputs && outputs.length > 0) nodes.push({
+      path: "outputs",
       label: "outputs",
       class: "text-amber",
       bold: true,
-      children: outputs
+      children: appendId(outputs as any, ["outputs"])
     })
     return nodes
   })
@@ -39,7 +51,7 @@ import OutputTreeEndpoint from "./OutputTreeEndpoint.vue"
 <template>
   <q-tree
     :nodes="nodes"
-    node-key="label"
+    node-key="path"
     :dense="dense"
   >
     <template v-slot:default-header="prop">
