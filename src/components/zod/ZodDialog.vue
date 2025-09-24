@@ -9,6 +9,7 @@ const { title, zod, ignore, selectKey } = defineProps<{
   zod: ZodConfig|ZodObject|ZodAnyOf
   ignore?: string[]
   selectKey?: string
+  withLabel?: boolean
 }>()
 const form = defineModel<Record<string, any>>("form", { required: true })
 const open = defineModel<boolean>("open", { required: true })
@@ -29,6 +30,14 @@ const { debug } = storeToRefs(store)
       >
         <q-card-section v-if="title">
           <div class="text-h6">{{ title }}</div>
+        </q-card-section>
+        <q-card-section class="q-pt-none" v-if="withLabel">
+          <q-input
+            filled
+            v-model="form.label"
+            label="Label"
+            :rules="[ val => val && val.length > 0 || 'Please type something']"
+          />
         </q-card-section>
         <q-card-section class="q-pt-none">
           <FormConfig

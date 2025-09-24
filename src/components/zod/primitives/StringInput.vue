@@ -40,7 +40,6 @@ const rules = computed<ValidationRule[]>(() => {
   if (patterns) {
     rules.push(val => val && patterns.some(pattern => new RegExp(pattern!).test(val)) || `pattern missmatch `)
   }
-  if (id === "host") console.log(id, rules)
   return rules
 })
 
@@ -51,9 +50,10 @@ const rules = computed<ValidationRule[]>(() => {
     <q-input
       outlined
       v-model="model[id]"
-      :label="id"
+      :label="`${id}${required ? '*' : ''}`"
       :hint="prop.description"
       :rules="rules"
+      :required="required"
     />
   </div>
 </template>

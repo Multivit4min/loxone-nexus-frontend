@@ -2,6 +2,7 @@ import type { ZodConfig } from "@/components/zod/type"
 import { api } from "./client"
 import type { VariableDirection } from "./types/variable"
 import type { Integration, Integrations } from "./types/integrations"
+import type { TreeProps } from "@/components/tree/tree.type"
 
 export type IntegrationConfigResponse = {
   commonSchema: ZodConfig
@@ -44,6 +45,10 @@ export const deleteIntegration = (id: number) => {
 
 export const updateIntegration = (id: number, data: Omit<IntegrationUpdate, "name">) => {
   return api.patch<IntegrationConfigResponse>(`/api/integration/${id}`, data)
+}
+
+export const getIntegrationTree = (id: number) => {
+  return api.get<TreeProps>(`/api/integration/${id}/tree`)
 }
 
 export const getInternalVariables = <T>(id: number) => {

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { VariableValueType, type VariableTypes } from "@/api/types/variable"
-import { watch } from "vue"
 
 const { variable } = defineProps<{ variable: VariableTypes }>()
 
@@ -13,7 +12,6 @@ const getVariabelValue = (variable: VariableTypes, value: any) => {
   return `${value}${"suffix" in variable && variable.suffix ? variable.suffix : ""}`
 }
 
-watch(() => variable, v => console.log(v.value))
 </script>
 
 <template>

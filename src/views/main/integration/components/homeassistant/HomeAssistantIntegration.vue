@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import VariableTree from "./VariableTree.vue"
 import type { Integration } from "@/api/types/integrations"
+import Tree from "@/components/tree/Tree.vue"
 import VariableList from "@/components/variables/VariableList.vue"
 
 const { integration } = defineProps<{ integration: Integration }>()
@@ -30,7 +30,7 @@ const { integration } = defineProps<{ integration: Integration }>()
           <div class="text-subtitle2">available entries from HomeAssistant which can be added to the Variable List</div>
         </q-card-section>
         <q-card-section>
-          <VariableTree :integration="integration" />
+          <Tree :integration="integration" dense />
         </q-card-section>
       </q-card>
     </div>

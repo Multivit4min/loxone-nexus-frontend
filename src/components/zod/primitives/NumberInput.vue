@@ -16,8 +16,8 @@ if (prop.default) model.value[id] = prop.default
 const rules = computed<ValidationRule[]>(() => {
   const rules: ValidationRule[] = []
   if (required) rules.push(val => val || `is required`)
-  if (typeof prop.minimum === "number") rules.push(val => val >= prop.minimum! || `minimum is ${prop.minimum}`)
-  if (typeof prop.maximum === "number") rules.push(val => val <= prop.maximum! || `maximum is ${prop.maximum}`)
+  if (typeof prop.minimum === "number") rules.push(val => !val || val >= prop.minimum! || `minimum is ${prop.minimum}`)
+  if (typeof prop.maximum === "number") rules.push(val => !val || val <= prop.maximum! || `maximum is ${prop.maximum}`)
   return rules
 })
 
@@ -29,9 +29,10 @@ const rules = computed<ValidationRule[]>(() => {
       type="number"
       outlined
       v-model.number="model[id]"
-      :label="id"
+      :label="`${id}${required ? '*' : ''}`"
       :hint="prop.description"
       :rules="rules"
+      :required="required"
     />
   </div>
 </template>
