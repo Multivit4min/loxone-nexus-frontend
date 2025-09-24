@@ -16,7 +16,7 @@ const instance = computed(() => {
   return instances.value.find(i => i.id === parseInt(router.currentRoute.value.params.instanceId as any, 10))
 })
 
-if (!instance && initialized.value) router.push("/")
+if (!instance.value && initialized.value) router.push("/")
 </script>
 
 <template>

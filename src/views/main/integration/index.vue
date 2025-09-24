@@ -18,7 +18,7 @@ const integration = computed(() => {
   return integrations.value.find(i => i.id === parseInt(router.currentRoute.value.params.integrationId as any, 10))
 })
 
-if (!integration && initialized.value) router.push("/")
+if (!integration.value && initialized.value) router.push("/")
 </script>
 
 <template>
