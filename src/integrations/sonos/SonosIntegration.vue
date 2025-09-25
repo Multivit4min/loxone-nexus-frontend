@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import type { SonosIntegration } from "@/api/types/integrations/sonos"
-import Tree from "@/components/tree/Tree.vue";
+import Tree from "@/components/tree/Tree.vue"
 import VariableList from "@/components/variables/VariableList.vue"
+import InputVolume from "./help/InputVolume.vue";
+import SelectedNotification from "./help/SelectedNotification.vue";
+import Notification_Uri from "./help/Notification_Uri.vue";
 
 const { integration } = defineProps<{ integration: SonosIntegration }>()
 
@@ -26,27 +29,9 @@ const { integration } = defineProps<{ integration: SonosIntegration }>()
               :instance="integration"
               :disable="['source']"
             >
-              <template v-slot:$zod[input#volume]>
-                <q-card-section>
-                  Use a Analog Input which has a value range from 0 to 100% to set the Volume
-                </q-card-section>
-              </template>
-              <template v-slot:$zod[selected#notification]>
-                <q-card-section>
-                  When Loxone Input is:
-                  <ul>
-                    <li><b>TEXT</b> Set the URI manually via Loxone</li>
-                    <li><b>DIGITAL</b> Start the Playback with preset URI on Rising Edge</li>
-                  </ul> 
-                </q-card-section>
-              </template>
-              <template v-slot:$zod[notification.uri]>
-                <q-card-section>
-                  <div>Valid uris for playback</div>
-                  <div><code>https://example.com/sonos/example.mp3</code> play from Web URL</div>
-                  <div><code>x-file-cifs://127.0.0.1/sonos/example.mp3</code> play from NAS or other Network Storage</div>
-                </q-card-section>
-              </template>
+              <template v-slot:$zod[input#volume]><InputVolume /></template>
+              <template v-slot:$zod[selected#notification]><SelectedNotification /></template>
+              <template v-slot:$zod[notification.uri]><Notification_Uri /></template>
             </VariableList>
           </q-card-section>
         </q-card>
@@ -57,7 +42,11 @@ const { integration } = defineProps<{ integration: SonosIntegration }>()
           <q-card-section>
             <div class="text-h6">Sonos Entities</div>
           </q-card-section>
-          <Tree :integration="integration" dense />
+          <Tree :integration="integration" dense>
+            <template v-slot:$zod[input#volume]><InputVolume /></template>
+            <template v-slot:$zod[selected#notification]><SelectedNotification /></template>
+            <template v-slot:$zod[notification.uri]><Notification_Uri /></template>
+          </Tree>
         </q-card>
       </div>
     </div>

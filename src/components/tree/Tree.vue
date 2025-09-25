@@ -35,12 +35,20 @@ import OutputTreeEndpoint from "./OutputTreeEndpoint.vue"
           :integration="integration"
           :endpoint="prop.node"
           v-else-if="'value' in prop.node && 'config' in prop.node"
-        />
+        >
+          <template v-for="(slotFn, name) in $slots" v-slot:[name]="slotProps">
+            <slot :name="<any>name" v-bind="slotProps"></slot>
+          </template>
+        </InputTreeEndpoint>
         <OutputTreeEndpoint
           :integration="integration"
           :endpoint="prop.node"
           v-else-if="'config' in prop.node"
-        />
+        >
+          <template v-for="(slotFn, name) in $slots" v-slot:[name]="slotProps">
+            <slot :name="<any>name" v-bind="slotProps"></slot>
+          </template>
+        </OutputTreeEndpoint>
       </template>
     </q-tree>
   </q-card-section>

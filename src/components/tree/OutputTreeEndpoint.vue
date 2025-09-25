@@ -30,7 +30,11 @@ import { VariableDirection } from "@/api/types/variable"
       :title="`Add ${integration.label} Variable`"
       withLabel
       @submit="createOutputVariable"
-    />
+    >
+      <template v-for="(slotFn, name) in $slots" v-slot:[name]="slotProps">
+        <slot :name="<any>name" v-bind="slotProps"></slot>
+      </template>
+    </ZodDialog>
     <q-btn round dense size="xs" color="primary" icon="mdi-plus" @click="openDialog = true" />
     <label
       :class="{

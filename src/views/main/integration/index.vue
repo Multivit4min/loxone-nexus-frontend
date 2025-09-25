@@ -4,8 +4,8 @@ import { storeToRefs } from "pinia"
 import { computed } from "vue"
 import { useIntegrationStore } from "@/store/integration"
 import IntegrationToolbar from "./components/common/IntegrationToolbar.vue"
-import HomeAssistantIntegration from "@/views/main/integration/components/HomeAssistantIntegration.vue"
-import SonosIntegration from "./components/SonosIntegration.vue"
+import HomeAssistantIntegration from "@/integrations/homeAssistant/HomeAssistantIntegration.vue"
+import SonosIntegration from "../../../integrations/sonos/SonosIntegration.vue"
 import { useAppStore } from "@/store/app"
 
 const store = useIntegrationStore()
