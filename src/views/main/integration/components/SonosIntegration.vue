@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { SonosIntegration } from "@/api/types/integrations/sonos"
+import Tree from "@/components/tree/Tree.vue";
 import VariableList from "@/components/variables/VariableList.vue"
 
 const { integration } = defineProps<{ integration: SonosIntegration }>()
@@ -10,7 +11,7 @@ const { integration } = defineProps<{ integration: SonosIntegration }>()
 <template>
   <div>
     <div class="row q-col-gutter-md">
-      <div class="col-md-12">
+    <div class="col-md-8 col-sm-12">
         <q-card flat bordered v-if="integration.specific.zone">
           <q-card-section>
             <div class="row items-center no-wrap">
@@ -48,6 +49,15 @@ const { integration } = defineProps<{ integration: SonosIntegration }>()
               </template>
             </VariableList>
           </q-card-section>
+        </q-card>
+      </div>
+
+      <div class="col-md-4 col-sm-12">  
+        <q-card flat bordered>
+          <q-card-section>
+            <div class="text-h6">Sonos Entities</div>
+          </q-card-section>
+          <Tree :integration="integration" dense />
         </q-card>
       </div>
     </div>
