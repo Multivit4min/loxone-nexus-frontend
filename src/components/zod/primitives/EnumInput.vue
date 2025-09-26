@@ -9,6 +9,8 @@ const { prop, id } = defineProps<{
   readonly prop: ZodString
 }>()
 
+if (prop.default !== undefined && model.value[id] === undefined) model.value[id] = prop.default
+
 </script>
 
 <template>

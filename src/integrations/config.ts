@@ -14,6 +14,10 @@ export const integrationMeta: Record<string, IntegrationMeta> = {
   Sonos: {
     icon: "mdi-cast-audio",
     label: "Sonos"
+  },
+  Calendar: {
+    icon: "mdi-calendar-month",
+    label: "Calendar"
   }
 }
 

@@ -12,6 +12,7 @@ import type { LoxoneInstance } from "@/api/types/loxone"
 import type { Integration } from "@/api/types/integrations"
 import { computed } from "vue"
 import CreateIntegrationVariableAction from "./fields/actions/CreateIntegrationVariableAction.vue"
+import type { ZodDataType } from "../zod/type"
 
 export interface IVariableInterface {
   variables: VariableTypes[]
@@ -20,6 +21,19 @@ export interface IVariableInterface {
 const { instance, disable } = defineProps<{
   instance: IVariableInterface|LoxoneInstance|Integration
   disable?: ("direction"|"source"|"label"|"type"|"value"|"link"|"actions"|"create"|"action.edit")[]
+  //general input description for specified name
+  [key: `$zod[input#${string}]`]: () => void
+  //create variable selected action description
+  [key: `$zod[selected#${string}]`]: () => void
+  //create variable selected action + fieldname description
+  [key: `$zod[${string}.${string}]`]: () => void
+  //create a custom input field on action + fieldname
+  [key: `zod[custom.input#${string}.${string}]`]: (props: {
+    zod: ZodDataType
+    
+  }) => void
+  //create a custom input field on fieldname
+  //[key: `zod[custom#${string}]`]: () => void
 }>()
 
 const variables = computed(() => instance.variables)
@@ -157,7 +171,11 @@ if (!ignore.includes("actions")) {
               <ActionField
                 :variable="props.row"
                 :disable="ignore"
-              />
+              >
+                <template v-for="(slotFn, name) in $slots" v-slot:[name]="slotProps">
+                  <slot :name="<any>name" v-bind="slotProps"></slot>
+                </template>
+              </ActionField>
             </slot>
           </q-td>
         </q-tr>

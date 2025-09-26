@@ -4,7 +4,7 @@ import { useLoxoneStore } from "@/store/loxone"
 import DrawerItem from "@/views/main/dashboard/components/sidebar/DrawerItem.vue"
 import { storeToRefs } from "pinia"
 import { ref } from "vue"
-import { meta } from "@/views/main/integration/components/config"
+import { meta } from "@/integrations/config"
 import CreateLoxoneDialog from "./CreateLoxoneDialog.vue"
 import CreateIntegrationDialog from "./CreateIntegrationDialog.vue"
 

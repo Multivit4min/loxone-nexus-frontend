@@ -11,7 +11,7 @@ const { prop, id, required } = defineProps<{
   readonly prop: ZodNumber
 }>()
 
-if (prop.default) model.value[id] = prop.default
+if (typeof prop.default === "number" && model.value[id] === undefined) model.value[id] = prop.default
 
 const rules = computed<ValidationRule[]>(() => {
   const rules: ValidationRule[] = []

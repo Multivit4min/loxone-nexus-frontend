@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { removeLink } from "@/api/link"
-import { meta } from "@/views/main/integration/components/config"
+import { meta } from "@/integrations/config"
   import { useIntegrationStore } from "@/store/integration"
 import { computed } from "vue"
   import { RouterLink } from "vue-router"

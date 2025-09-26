@@ -4,7 +4,7 @@ import type { LoxoneInstance, LoxoneVariable } from "@/api/types/loxone"
 import { type VariableTypes } from "@/api/types/variable"
 import { useIntegrationStore } from "@/store/integration"
 import { useLoxoneStore } from "@/store/loxone"
-import { meta } from "@/views/main/integration/components/config"
+import { meta } from "@/integrations/config"
 import { computed } from "vue"
 
 const integrationStore = useIntegrationStore()

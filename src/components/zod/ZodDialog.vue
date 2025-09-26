@@ -4,6 +4,19 @@ import FormConfig from "./FormConfig.vue"
 import type { ZodAnyOf, ZodConfig, ZodObject } from "./type"
 import { storeToRefs } from "pinia";
 
+defineSlots<{
+  //general input description for specified name
+  [key: `$zod[input#${string}]`]: () => void
+  //create variable selected action description
+  [key: `$zod[selected#${string}]`]: () => void
+  //create variable selected action + fieldname description
+  [key: `$zod[${string}.${string}]`]: () => void
+  //create a custom input field on action + fieldname
+  [key: `zod[custom.input#${string}.${string}]`]: () => void
+  //create a custom input field on fieldname
+  //[key: `zod[custom.input#${string}]`]: () => void
+}>()
+
 const { title, zod, ignore, selectKey } = defineProps<{
   title?: string
   zod: ZodConfig|ZodObject|ZodAnyOf
@@ -47,7 +60,7 @@ const { debug } = storeToRefs(store)
             :selectKey="selectKey"
           >
             <template v-for="(slotFn, name) in $slots" v-slot:[name]="slotProps">
-              <slot :name="name" v-bind="slotProps"></slot>
+              <slot :name="name as any" v-bind="slotProps"></slot>
             </template>
           </FormConfig>
           <q-card-actions align="right">

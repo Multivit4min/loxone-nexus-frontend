@@ -2,7 +2,7 @@
 import { deleteIntegration, updateIntegration, type IntegrationUpdate } from "@/api/integration"
 import { ref } from "vue"
 import IntegrationEditDialog from "./IntegrationEditDialog.vue"
-import { meta } from "../config"
+import { meta } from "../../../../../integrations/config"
 import type { Integration } from "@/api/types/integrations"
 
 const { integration } = defineProps<{ integration: Integration }>()

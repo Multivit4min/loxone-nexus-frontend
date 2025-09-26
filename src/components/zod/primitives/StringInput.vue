@@ -21,7 +21,7 @@ const isUri = (str: string) => {
   }
 }
 
-if (prop.default) model.value[id] = prop.default
+if (typeof prop.default === "string" && model.value[id] === undefined) model.value[id] = prop.default
 
 const rules = computed<ValidationRule[]>(() => {
   const rules: ValidationRule[] = []

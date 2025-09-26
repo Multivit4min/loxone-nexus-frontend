@@ -8,8 +8,12 @@ defineSlots<{
   [key: `$zod[input#${string}]`]: () => void
   //create variable selected action description
   [key: `$zod[selected#${string}]`]: () => void
-  //create variable selected action + field name description
+  //create variable selected action + fieldname description
   [key: `$zod[${string}.${string}]`]: () => void
+  //create a custom input field on action + fieldname
+  [key: `zod[custom.input#${string}.${string}]`]: () => void
+  //create a custom input field on fieldname
+  //[key: `zod[custom#${string}]`]: () => void
 }>()
 
 const model = defineModel<Record<string, any>>({

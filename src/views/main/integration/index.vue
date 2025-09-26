@@ -7,6 +7,7 @@ import IntegrationToolbar from "./components/common/IntegrationToolbar.vue"
 import HomeAssistantIntegration from "@/integrations/homeAssistant/HomeAssistantIntegration.vue"
 import SonosIntegration from "../../../integrations/sonos/SonosIntegration.vue"
 import { useAppStore } from "@/store/app"
+import Selector from "@/integrations/selector.vue"
 
 const store = useIntegrationStore()
 const { integrations, initialized } = storeToRefs(store)
@@ -30,14 +31,7 @@ if (!integration.value && initialized.value) router.push("/")
     </div>
     <div class="row q-col-gutter-md">
       <div class="col-md-12 col-sm-12">
-        <HomeAssistantIntegration
-          v-if="integration.type === 'HomeAssistant'"
-          :integration="integration"
-        />
-        <SonosIntegration
-          v-if="integration.type === 'Sonos'"
-          :integration="integration"
-        />
+        <Selector :integration="integration" />
       </div>
     </div>
     <pre v-if="debug">{{ integration }}</pre>

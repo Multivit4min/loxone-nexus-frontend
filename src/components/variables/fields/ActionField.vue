@@ -23,7 +23,11 @@ const { variable, disable } = defineProps<{
     <EditIntegrationVariableAction
       v-if="'integrationId' in variable && !disable.includes('action.edit')"
       :variable="variable"
-    />
+    >
+      <template v-for="(slotFn, name) in $slots" v-slot:[name]="slotProps">
+        <slot :name="<any>name" v-bind="slotProps"></slot>
+      </template>
+    </EditIntegrationVariableAction>
     <DeleteAction :variable="variable" />
   </span>
 </template>
