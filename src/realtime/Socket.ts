@@ -3,10 +3,11 @@ import { useIntegrationStore } from "@/store/integration"
 import { useLoxoneStore } from "@/store/loxone"
 import { Notify } from "quasar"
 import { io } from "socket.io-client"
+import msgPackParser from "socket.io-msgpack-parser"
 
 export class Socket {
   
-  readonly socket = io({ transports: ["websocket"] })
+  readonly socket = io({ transports: ["websocket"], parser: msgPackParser })
   
   constructor() {
     this.socket.io.on("close", this.onClose.bind(this))

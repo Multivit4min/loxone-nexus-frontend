@@ -48,6 +48,23 @@ const addIntegration = async () => {
         IPv4 Address of your Speaker
       </q-card-section>
     </template>
+    <template v-slot:$zod[selected#Hue]>
+      <q-card-section>
+        <q-item clickable>
+          <q-item-section avatar>
+            <q-icon color="amber" name="mdi-alert" />
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label>First Time Setup Instruction</q-item-label>
+            <q-item-label caption>
+              To setup credentials for this Bridge make sure that the Bridge itself has the main button pressed,
+              the light on the bridge should be blue
+            </q-item-label>
+          </q-item-section>
+        </q-item>
+      </q-card-section>
+    </template>
   </ZodDialog>
 </template>
 
