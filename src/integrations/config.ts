@@ -18,6 +18,10 @@ export const integrationMeta: Record<string, IntegrationMeta> = {
   Calendar: {
     icon: "mdi-calendar-month",
     label: "Calendar"
+  },
+  Hue: {
+    icon: "mdi-lightbulb-multiple",
+    label: "Hue"
   }
 }
 

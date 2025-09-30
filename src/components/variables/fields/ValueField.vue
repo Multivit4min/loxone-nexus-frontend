@@ -38,6 +38,10 @@ const getVariabelValue = (variable: VariableTypes, value: any) => {
       <label class="text-yellow">{{ variable.value.value.white }}% </label>
       <label class="text-yellow">{{ variable.value.value.fadeTime }}s </label>
     </span>
+    <span v-else-if="variable.value.type === VariableValueType.SMARTACTUATORTUNABLEWHITE" class="text-yellow">
+      <q-icon name="mdi-lightbulb-on-50" class="q-mr-xs" /> 
+      <label v-if="typeof variable.value === 'object' && variable.value.value !== null">{{ variable.value.value.brightness }}% {{ variable.value.value.temperature }}K {{ variable.value.value.fadeTime }}s</label>
+    </span>
     <span v-else-if="variable.value.type !== VariableValueType.NULL">
       <pre>{{variable.value}}</pre>
     </span>

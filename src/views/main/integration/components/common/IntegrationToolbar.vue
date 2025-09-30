@@ -71,7 +71,7 @@ const saveEditIntegration = async () => {
   <q-dialog v-model="confirmDelete" persistent>
   <q-card>
     <q-card-section class="row items-center">
-      <q-avatar icon="warning" color="amber" />
+      <q-avatar icon="mdi-alert" color="amber" />
       <span class="q-ml-sm">You are about to delete the instance {{ integration.label }}</span>
     </q-card-section>
     <q-card-actions align="right">
