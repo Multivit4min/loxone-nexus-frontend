@@ -26,6 +26,7 @@ export type IntegrationVariable<T = any> = {
   direction: VariableDirection
   value?: VariableValueData
   config: T
+  store: any
   links: VariableLink[]
 }
 

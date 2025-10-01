@@ -51,10 +51,6 @@ export const getIntegrationTree = (id: number) => {
   return api.get(`/api/integration/${id}/tree`)
 }
 
-export const getInternalVariables = <T>(id: number) => {
-  return api.get<T>(`/api/integration/${id}/internalVariables`)
-}
-
 export type CreateIntegrationVariableProps<T extends Record<string, any>> = {
   label: string
   direction: VariableDirection

@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import CalendarIntegration from "./calendar/CalendarIntegration.vue"
 import HomeAssistantIntegration from "./homeAssistant/HomeAssistantIntegration.vue"
-import HueIntegration from "./hue/HueIntegration.vue";
+import HueIntegration from "./hue/HueIntegration.vue"
 import SonosIntegration from "./sonos/SonosIntegration.vue"
 import type { Integration } from "@/api/types/integrations"
+import WebhookIntegration from "./webhook/WebhookIntegration.vue"
 
 
 const { integration } = defineProps<{ integration: Integration }>()
@@ -25,6 +26,10 @@ const { integration } = defineProps<{ integration: Integration }>()
   />
   <HueIntegration
     v-else-if="integration.type === 'Hue'"
+    :integration="integration"
+  />
+  <WebhookIntegration
+    v-else-if="integration.type === 'Webhook'"
     :integration="integration"
   />
   <div v-else>Integration {{ integration.type }} not defined in @/integrations/selector.vue</div>

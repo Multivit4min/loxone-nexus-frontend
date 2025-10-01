@@ -22,6 +22,10 @@ export const integrationMeta: Record<string, IntegrationMeta> = {
   Hue: {
     icon: "mdi-lightbulb-multiple",
     label: "Hue"
+  },
+  Webhook: {
+    icon: "mdi-webhook",
+    label: "Webhook"
   }
 }
 

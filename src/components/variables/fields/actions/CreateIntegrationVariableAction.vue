@@ -30,8 +30,9 @@ const saveAction = async (direction: VariableDirection) => {
 
 }
 
-const tab = ref<VariableDirection>(VariableDirection.OUTPUT)
-
+const hasInputs = 'anyOf' in instance.inputVariableSchema && instance.inputVariableSchema.anyOf.length > 0
+const hasOutputs = "anyOf" in instance.outputVariableSchema && instance.outputVariableSchema.anyOf.length > 0
+const tab = ref<VariableDirection>(hasOutputs ? VariableDirection.OUTPUT : VariableDirection.INPUT)
 
 </script>
 
@@ -53,9 +54,10 @@ const tab = ref<VariableDirection>(VariableDirection.OUTPUT)
               indicator-color="primary"
               align="justify"
               narrow-indicator
+              v-if="hasOutputs && hasInputs"
             >
-              <q-tab name="OUTPUT" label="output" />
-              <q-tab name="INPUT" label="input" />
+              <q-tab name="OUTPUT" label="output" v-if="hasOutputs" />
+              <q-tab name="INPUT" label="input" v-if="hasInputs" />
             </q-tabs>
 
             <q-card-section>
