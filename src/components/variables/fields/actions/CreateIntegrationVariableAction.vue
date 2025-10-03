@@ -27,7 +27,7 @@ const saveAction = async (direction: VariableDirection) => {
   if (!form.value) return
   const { label, ...props } = form.value
   await createVariable(instance.id, { label, direction, props })
-
+  openDialog.value = false
 }
 
 const hasInputs = 'anyOf' in instance.inputVariableSchema && instance.inputVariableSchema.anyOf.length > 0
@@ -103,7 +103,6 @@ const tab = ref<VariableDirection>(hasOutputs ? VariableDirection.OUTPUT : Varia
                 label="Create"
                 color="primary"
                 @click="saveAction(tab === 'INPUT' ? VariableDirection.INPUT : VariableDirection.OUTPUT)"
-                v-close-popup
               />
             </q-card-actions>
           </q-card>

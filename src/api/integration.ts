@@ -2,7 +2,6 @@ import type { ZodConfig } from "@/components/zod/type"
 import { api } from "./client"
 import type { VariableDirection } from "./types/variable"
 import type { Integration, Integrations } from "./types/integrations"
-import type { TreeProps } from "@/components/tree/tree.type"
 
 export type IntegrationConfigResponse = {
   commonSchema: ZodConfig
@@ -72,4 +71,20 @@ export const updateVariable = <T extends Record<string, any>>(id: number, variab
 
 export const deleteIntegrationVariable = (id: number, variableId: number) => {
   return api.delete(`/api/integration/${id}/variable/${variableId}`)
+}
+
+/**
+ * calls the path /api/integration/:integrationId/custom/:path
+ * @param integrationId 
+ * @param path 
+ * @returns 
+ */
+export const customIntegrationRoute = (integrationId: number, path: string) => {
+  const basePath = `/api/integration/${integrationId}/custom/${path}`
+  return {
+    get: () => api.get(basePath),
+    post: (data: any) => api.post(basePath, data),
+    patch: (data: any) => api.patch(basePath, data),
+    delete: () => api.delete(basePath),
+  }
 }

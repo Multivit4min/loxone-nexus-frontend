@@ -18,12 +18,30 @@ const { zod, ignore, id, required, name } = defineProps<{
   required?: string[]
 }>()
 
+const isRequired = computed(() => (required||[]).includes(name))
+const isIgnored = computed(() => (ignore||[]).includes(name))
+
+const customProps = computed(() => ({
+  form: model.value,
+  zod,
+  id: "name",
+  required: isRequired.value
+}))
+
+declare type SlotProps = {
+  form: Record<string, any>
+  zod: ZodDataType,
+  id: string
+  required: boolean
+}
 
 defineSlots<{
-  [key: `$zod[input#${string}]`]: () => void
-  [key: `$zod[selected#${string}]`]: () => void
-  [key: `$zod[${string}.${string}]`]: (props: { prop: Record<string, any>}) => void
+  [key: `$zod[input#${string}]`]: (props: SlotProps) => void
+  [key: `$zod[selected#${string}]`]: (props: SlotProps) => void
+  [key: `$zod[${string}.${string}]`]: (props: SlotProps) => void
+  [key: `$zod[${string}.${string}].after`]: (props: SlotProps) => void
   [key: `$zodCustomInput#${string}.${string}`]: (props: {
+    form: Record<string, any>
     zod: ZodDataType,
     id: string,
     required: boolean
@@ -32,20 +50,16 @@ defineSlots<{
   }) => void
 }>()
 
-const isRequired = computed(() => (required||[]).includes(name))
-const isIgnored = computed(() => (ignore||[]).includes(name))
 
 </script>
 
 <template>
   <q-card-section v-if="zod && !isIgnored">
-    <slot v-if="id" :name="`$zod[input#${name}]`" :prop="zod"></slot>
-    <slot v-if="id" :name="`$zod[${id}.${name}]`" :prop="zod"></slot>
+    <slot v-if="id" :name="`$zod[input#${name}]`" v-bind="customProps"></slot>
+    <slot v-if="id" :name="`$zod[${id}.${name}]`" v-bind="customProps"></slot>
     <slot
       :name="`$zodCustomInput#${id}.${name}`"
-      :zod="zod"
-      :id="name"
-      :required="isRequired"
+      v-bind="customProps"
       :modelValue="model[name]"
       :updateModelValue="value => model[name] = value"
     >
@@ -80,6 +94,11 @@ const isIgnored = computed(() => (ignore||[]).includes(name))
         />
         <pre v-else>{{ {id: name, required: isRequired, zod} }}</pre>
       </span>
+    </slot>
+    <slot
+      v-if="id"
+      :name="`$zod[${id}.${name}].after`"
+      v-bind="customProps">
     </slot>
   </q-card-section>
 </template>

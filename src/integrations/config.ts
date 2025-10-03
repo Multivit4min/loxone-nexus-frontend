@@ -26,6 +26,10 @@ export const integrationMeta: Record<string, IntegrationMeta> = {
   Webhook: {
     icon: "mdi-webhook",
     label: "Webhook"
+  },
+  Mqtt: {
+    icon: "mdi-hub",
+    label: "Mqtt"
   }
 }
 

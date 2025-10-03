@@ -27,7 +27,6 @@ export class ApiClient {
         color: "red"
       })
       throw new Error(`Request failed with status ${res.status} (${res.statusText})`)
-
     }
     if (res.headers.get("Content-Type")?.includes("application/json")) {
       return res.json()
