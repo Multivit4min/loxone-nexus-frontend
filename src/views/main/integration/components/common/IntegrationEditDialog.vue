@@ -28,7 +28,6 @@ const [model] = defineModel<EditIntegrationModel>({
       <q-input outlined v-model="model.label" label="Label" />
     </q-card-section>
     <FormConfig :zod="zod" v-model="model.config" />
-    <pre>{{ zod }}</pre>
   </q-form>
 </template>
 
