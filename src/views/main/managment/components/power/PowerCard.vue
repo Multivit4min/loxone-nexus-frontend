@@ -8,7 +8,7 @@ import { restartApplication } from "@/api/power"
     <q-card-section>
       <q-btn
         icon="mdi-restart"
-        label="Restart Application"
+        label="Reload Application"
         color="primary"
         @click="restartApplication()"
       />
