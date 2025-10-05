@@ -20,7 +20,7 @@ import { useLoxoneStore } from "@/store/loxone"
         id: v.id,
         label: v.integrationVariable?.label,
         icon: meta(v.integrationVariable?.integration.type!).icon,
-        link: `/loxone/${variable.loxoneId}`,
+        link: `/integration/${v.integrationVariable?.integrationId}`,
         source: v.integrationVariable?.integration.label,
         hash: v.integrationVariable?.label
       }))
@@ -28,7 +28,7 @@ import { useLoxoneStore } from "@/store/loxone"
       return loxone.getVariablesByLinks(variable.links).map(v => ({
         id: v.id,
         label: v.loxoneVariable?.label || v.loxoneVariable?.packetId,
-        link: `/integration/${variable.integrationId}`,
+        link: `/loxone/${v.loxoneVariable?.loxoneId}`,
         source: v.loxoneVariable?.instance.label,
         hash: v.loxoneVariable?.label
       }))
