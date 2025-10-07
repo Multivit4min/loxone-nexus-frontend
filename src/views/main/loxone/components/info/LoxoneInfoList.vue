@@ -14,8 +14,7 @@ const connectionGuide = ref(false)
 <template>
   <div>
     <q-list bordered separator>
-      <KeyValueItem label="Loxone Address" :value="instance.host" />
-      <KeyValueItem label="Loxone Port" :value="instance.port" />
+      <KeyValueItem label="Loxone Address" :value="`${instance.host}:${instance.port}`" />
       <KeyValueItem label="own Id" :value="instance.ownId" />
       <KeyValueItem label="Connection Settings for Loxone" :value="`${config.config?.localAddress }:${ instance.listenPort }`">
         <template v-slot:sidebar>

@@ -41,7 +41,7 @@ const tab = ref<VariableDirection>(hasOutputs ? VariableDirection.OUTPUT : Varia
     <q-td colspan="100%" class="text-center">
       <q-btn icon="mdi-plus" flat outline dense color="primary" label="Create Variable" @click="editAction()" />
         <q-dialog v-model="openDialog">
-          <q-card style="min-width:30%">
+          <q-card style="min-width:40%;max-width:90%;">
             <q-card-section>
               <q-avatar icon="mdi-pencil" />
               <span class="q-ml-sm">Create Variable</span>

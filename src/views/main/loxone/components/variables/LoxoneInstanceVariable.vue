@@ -9,7 +9,7 @@ const { instance } = defineProps<{ instance: LoxoneInstance }>()
 <template>
   <div>
     <VariableToolbar :instance="instance" />
-    <VariableList :instance="instance" />
+    <VariableList :instance="instance" :disable="['source']" />
   </div>
 </template>
 

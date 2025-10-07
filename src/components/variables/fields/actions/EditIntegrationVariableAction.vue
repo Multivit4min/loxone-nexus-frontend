@@ -67,7 +67,7 @@ export type VariableActionProps = {
     icon="mdi-cog"
   />
   <q-dialog v-model="openDialog">
-    <q-card style="min-width:30%" v-if="schema">
+    <q-card style="min-width:40%;max-width:90%;" v-if="schema">
       <q-card-section>
         <q-avatar icon="mdi-pencil" />
         <span class="q-ml-sm">Edit Variable</span>

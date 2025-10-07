@@ -15,7 +15,7 @@ const events = computed(() => integration.specific.events)
 
 <template>
   <div class="row q-col-gutter-md">
-    <div class="col-md-8 col-sm-12">
+    <div class="col-lg-8 col-md-12 col-sm-12">
       <q-card flat bordered>
         <q-card-section>
           <div class="text-h6">Variables</div>
@@ -51,7 +51,7 @@ const events = computed(() => integration.specific.events)
       </q-card>
     </div>
 
-    <div class="col-md-4 col-sm-12">  
+    <div class="col-lg-4 col-md-12 col-sm-12">
       <div class="row q-col-gutter-md">
         <div class="col-md-12">  
           <q-card flat bordered>

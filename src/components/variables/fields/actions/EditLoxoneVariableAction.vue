@@ -30,7 +30,7 @@ const saveAction = async () => {
 <template>
   <q-btn flat size="sm" round color="orange" @click="editAction()" icon="mdi-pencil" class="p-pr-lg" />
   <q-dialog v-model="openDialog">
-    <q-card style="min-width: 300px;">
+    <q-card style="min-width:40%;max-width:90%;">
       <q-card-section>
         <div class="text-h6">{{ variable.label || variable.packetId }}</div>
       </q-card-section>

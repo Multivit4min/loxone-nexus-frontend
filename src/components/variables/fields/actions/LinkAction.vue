@@ -44,7 +44,7 @@ const linkWith = async (v: VariableTypes) => {
     :disable="variable.direction !== VariableDirection.INPUT && variable.links?.length > 0"
   />
   <q-dialog v-model="openDialog">
-    <q-card  style="min-width: 30%">
+    <q-card style="min-width:40%;max-width: 90%;">
       <q-card-section>
         <q-avatar icon="mdi-pencil" />
         <span class="q-ml-sm">Link {{ variable.label }}</span>

@@ -8,7 +8,7 @@ const { integration } = defineProps<{ integration: Integration }>()
 
 <template>
   <div class="row q-col-gutter-md">
-    <div class="col-md-8 col-sm-12">
+    <div class="col-lg-8 col-md-12 col-sm-12">
       <q-card flat bordered>
         <q-card-section>
           <div class="text-h6">Variables</div>
@@ -23,7 +23,7 @@ const { integration } = defineProps<{ integration: Integration }>()
       </q-card>
     </div>
 
-    <div class="col-md-4 col-sm-12">  
+    <div class="col-lg-4 col-md-12 col-sm-12">
       <q-card flat bordered>
         <q-card-section>
           <div class="text-h6">HomeAssistant Entities</div>

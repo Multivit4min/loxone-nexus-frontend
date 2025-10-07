@@ -65,7 +65,7 @@ const copyVariableContent = (v: LoxoneVariable) => {
     <q-td colspan="100%" class="text-center">
       <q-btn icon="mdi-plus" flat outline dense color="primary" label="Create Variable" @click="editAction()" />
       <q-dialog v-model="openDialog">
-        <q-card style="min-width: 40%">
+        <q-card style="min-width: 40%;max-width: 90%;">
           <q-tabs
             v-model="tab"
             dense

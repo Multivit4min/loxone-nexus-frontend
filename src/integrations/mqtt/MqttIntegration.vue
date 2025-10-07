@@ -13,7 +13,7 @@ const { integration } = defineProps<{ integration: Integration }>()
 <template>
   <div>
     <div class="row q-col-gutter-md">
-      <div class="col-md-8 col-sm-12">
+      <div class="col-lg-8 col-md-12 col-sm-12">
         <q-card flat bordered>
           <q-card-section>
             <div class="row items-center no-wrap">
@@ -61,7 +61,7 @@ const { integration } = defineProps<{ integration: Integration }>()
           </q-card-section>
         </q-card>
       </div>
-      <div class="col-md-4 col-sm-12">
+      <div class="col-lg-4 col-md-12 col-sm-12">
         <TopicsOverview :integration="integration" />
       </div>
     </div>

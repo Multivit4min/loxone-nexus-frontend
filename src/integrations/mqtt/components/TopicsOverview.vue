@@ -31,6 +31,7 @@ const search = ref("")
       <q-list bordered class="rounded-borders">
         <span v-for="topic in integration.specific.topics">
           <q-expansion-item
+            style="overflow:hidden"
             v-if="search === '' || topic.includes(search)"
             expand-separator
             :label="topic"
