@@ -116,6 +116,11 @@ export const useIntegrationStore = defineStore("integration", {
       if (index < 0) return
       integration.variables[index] = variable
     },
+    setIntegrationSpecific(id: number, specific: any) {
+      const index = this.integrations.findIndex(i => i.id === id)
+      if (index < 0) return
+      this.integrations[index].specific = specific
+    },
     async getConfig() {
       if (this.config.commonSchema) return this.config
       this.config = await getConfig()

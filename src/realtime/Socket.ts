@@ -18,6 +18,7 @@ export class Socket {
     this.socket.on("integrations:update.all", this.setIntegrations.bind(this))
     this.socket.on("integrations:update.single", this.setIntegration.bind(this))
     this.socket.on("integrations:update.variable", this.setIntegrationVariable.bind(this))
+    this.socket.on("integrations:update.specific", this.setIntegrationSpecific.bind(this))
     this.socket.on("logs:push.all", this.setLogs.bind(this)) //not implemented yet
     this.socket.on("logs:push.new", this.addLogs.bind(this)) //not implemented yet
   }
@@ -73,6 +74,10 @@ export class Socket {
 
   private setIntegrationVariable({ variable }: { variable: IntegrationVariable }) {
     useIntegrationStore().setIntegrationVariable(variable)
+  }
+
+  private setIntegrationSpecific({ id, specific }: Pick<Integration, "id"|"specific">) {
+    useIntegrationStore().setIntegrationSpecific(id, specific)
   }
 
   //not implemented yet
