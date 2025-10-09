@@ -30,6 +30,10 @@ export const integrationMeta: Record<string, IntegrationMeta> = {
   Mqtt: {
     icon: "mdi-hub",
     label: "Mqtt"
+  },
+  Fronius: {
+    icon: "mdi-lightning-bolt",
+    label: "Fronius"
   }
 }
 
