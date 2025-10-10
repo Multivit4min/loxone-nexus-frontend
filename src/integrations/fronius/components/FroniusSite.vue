@@ -36,6 +36,12 @@ const { integration } = defineProps<{ integration: Integration }>()
         />
         <FroniusDataItem
           :integration="integration"
+          label="Photovoltaik"
+          suffix="W"
+          path="powerflow.Site.P_PV"
+        />
+        <FroniusDataItem
+          :integration="integration"
           label="Autonomy"
           suffix="%"
           path="powerflow.Site.rel_Autonomy"
