@@ -23,7 +23,7 @@ const formatStart = (event: any) => {
   <q-card flat bordered>
     <q-card-section>
       <div class="text-h6">Calendar Events</div>
-      <div class="text-caption">{{calendar.name}}</div>
+      <div class="text-caption" v-if="calendar">{{calendar.name}}</div>
     </q-card-section>
     <q-card-section>
       <q-list>

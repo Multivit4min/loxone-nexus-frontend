@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue"
+import { ref } from "vue"
 import { getIntegrationTree } from "@/api/integration"
 import TreeCategory from "./TreeCategory.vue"
 import InputTreeEndpoint from "./InputTreeEndpoint.vue"

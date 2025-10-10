@@ -13,7 +13,6 @@ const { integration, path, label, suffix, caption } = defineProps<{
 }>()
 
 const open = ref(false)
-const form = ref({ action: "read", label, path })
 
 const value = computed(() => {
   const value = _.get(integration.specific, path)
@@ -30,6 +29,9 @@ const createVariableDialog = () => {
 <template>
   <q-item clickable v-ripple v-if="value !== undefined && value !== null" @click="createVariableDialog">
     <CreateVariableDialog v-if="open" :integration="integration" :path="path" :label="label" v-model="open" />
+    <q-item-section avatar >
+      <q-icon name="mdi-plus" rounded size="xs" />
+    </q-item-section>
     <q-item-section>
       <q-item-label>{{label }}</q-item-label>
       <q-item-label caption v-if="caption">{{ caption }}</q-item-label>

@@ -47,7 +47,7 @@ export const updateIntegration = (id: number, data: Omit<IntegrationUpdate, "nam
 }
 
 export const getIntegrationTree = (id: number) => {
-  return api.get(`/api/integration/${id}/tree`)
+  return customIntegrationRoute(id, "/tree").get()
 }
 
 export type CreateIntegrationVariableProps<T extends Record<string, any>> = {
@@ -80,6 +80,7 @@ export const deleteIntegrationVariable = (id: number, variableId: number) => {
  * @returns 
  */
 export const customIntegrationRoute = (integrationId: number, path: string) => {
+  path = path.startsWith("/") ? path.slice(1) : path
   const basePath = `/api/integration/${integrationId}/custom/${path}`
   return {
     get: () => api.get(basePath),

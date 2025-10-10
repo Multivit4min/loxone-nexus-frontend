@@ -12,7 +12,6 @@ import Toolbar from "./components/Toolbar.vue"
 socket.authenticate()
 
 useConfigStore().fetchAppSpecific()
-useIntegrationStore().getConfig()
 const loxone = useLoxoneStore()
 const integration = useIntegrationStore()
 

@@ -7,7 +7,6 @@ import { useConfigStore } from "./store/config"
 const config = useConfigStore()
 const { initialized: configInit } = storeToRefs(config)
 
-config.fetchGeneral()
 </script>
 
 <template>
