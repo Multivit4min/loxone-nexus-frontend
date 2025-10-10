@@ -58,7 +58,7 @@ const columns: QTableColumn<any>[] = []
 if (!ignore.includes("direction")) {
   columns.push({
     name: "direction",
-    label: "direction",
+    label: "",
     field: "direction",
     align: "left",
     sortable: true
@@ -135,7 +135,7 @@ if (!ignore.includes("actions")) {
             :props="props"
             :auto-width="['direction'].includes(col.name)"
           >
-            {{ col.name }}
+            {{ col.label }}
           </q-th>
         </q-tr>
       </template>
