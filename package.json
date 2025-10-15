@@ -17,14 +17,17 @@
     "@quasar/extras": "^1.17.0",
     "@types/lodash": "^4.17.20",
     "@types/luxon": "^3.7.1",
+    "@types/prismjs": "^1.26.5",
     "@vueuse/core": "^13.7.0",
     "lodash": "^4.17.21",
     "luxon": "^3.7.2",
     "pinia": "^3.0.3",
+    "prismjs": "^1.30.0",
     "quasar": "^2.18.2",
     "socket.io-client": "^4.8.1",
     "socket.io-msgpack-parser": "^3.0.2",
     "vue": "^3.5.18",
+    "vue-prism-editor": "^2.0.0-alpha.2",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {

@@ -7,6 +7,7 @@ import type { Integration } from "@/api/types/integrations"
 import WebhookIntegration from "./webhook/WebhookIntegration.vue"
 import MqttIntegration from "./mqtt/MqttIntegration.vue"
 import FroniusIntegration from "./fronius/FroniusIntegration.vue"
+import ScriptIntegration from "./script/ScriptIntegration.vue"
 
 
 const { integration } = defineProps<{ integration: Integration }>()
@@ -40,6 +41,10 @@ const { integration } = defineProps<{ integration: Integration }>()
   />
   <FroniusIntegration
     v-else-if="integration.type === 'Fronius'"
+    :integration="integration"
+  />
+  <ScriptIntegration
+    v-else-if="integration.type === 'Script'"
     :integration="integration"
   />
   <div v-else>Integration {{ integration.type }} not defined in @/integrations/selector.vue</div>

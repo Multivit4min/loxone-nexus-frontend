@@ -4,7 +4,7 @@ import { VariableDirection, type VariableTypes } from "@/api/types/variable"
 import VariableList from "@/components/variables/VariableList.vue"
 import { useIntegrationStore } from "@/store/integration"
 import { useLoxoneStore } from "@/store/loxone"
-import { ref } from "vue"
+import { computed, ref } from "vue"
 
 const { variable } = defineProps<{ variable: VariableTypes }>()
 
@@ -12,14 +12,15 @@ const loxoneStore = useLoxoneStore()
 const integrationStore = useIntegrationStore()
 
 const openDialog = ref(false)
-const linkable = ref<VariableTypes[]>([])
-const openLinkDialog = (v: VariableTypes) => {
-  linkable.value = (() => {
-    const direction = variable.direction === VariableDirection.INPUT ? VariableDirection.OUTPUT : VariableDirection.INPUT
-    if ('loxoneId' in variable) return integrationStore.getVariableLinks(direction) as VariableTypes[]
-    if ('integrationId' in variable) return loxoneStore.getVariableLinks(direction) as VariableTypes[]
-    return [] as VariableTypes[]
-  })()
+
+const linkable = computed(() => {
+  const direction = variable.direction === VariableDirection.INPUT ? VariableDirection.OUTPUT : VariableDirection.INPUT
+  if ('loxoneId' in variable) return integrationStore.getVariableLinks(direction) as VariableTypes[]
+  if ('integrationId' in variable) return loxoneStore.getVariableLinks(direction) as VariableTypes[]
+  return [] as VariableTypes[]
+})
+
+const openLinkDialog = () => {
   openDialog.value = true
 }
 
@@ -39,7 +40,7 @@ const linkWith = async (v: VariableTypes) => {
     size="sm"
     round
     color="blue"
-    @click="openLinkDialog(variable)"
+    @click="openLinkDialog()"
     icon="mdi-link"
     :disable="variable.direction !== VariableDirection.INPUT && variable.links?.length > 0"
   />

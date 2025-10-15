@@ -34,6 +34,10 @@ export const integrationMeta: Record<string, IntegrationMeta> = {
   Fronius: {
     icon: "mdi-lightning-bolt",
     label: "Fronius"
+  },
+  Script: {
+    icon: "mdi-script-text",
+    label: "Script"
   }
 }
 
