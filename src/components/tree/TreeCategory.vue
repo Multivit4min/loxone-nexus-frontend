@@ -12,7 +12,11 @@ import type { TreeCategory } from "./tree.type"
       'text-bold': category.bold
     }"
   >
+    <q-icon v-if="category.icon" :name="category.icon" />
     {{ category.label }}
+    <span v-if="category.comment" class="q-pl-sm text-grey">
+      {{ category.comment }}
+    </span>
   </label>
 </template>
 
