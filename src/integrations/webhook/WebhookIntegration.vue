@@ -17,7 +17,6 @@ const { integration } = defineProps<{ integration: Integration }>()
             <div class="row items-center no-wrap">
               <div class="col">
                 <div class="text-h6">Webhook</div>
-                <div class="text-subtitle2">Foo</div>
               </div>
             </div>
           </q-card-section>
