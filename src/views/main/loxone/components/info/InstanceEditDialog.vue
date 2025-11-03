@@ -46,7 +46,7 @@ const isValidHost = (value: string) => {
       filled
       type="number"
       v-model.number="model.port"
-      label="Port"
+      label="Loxone Miniserver Port"
       :hint="`Default is ${DEFAULT_PORT}`"
       :rules="[val => val > 1024 && val <= 65535 || 'Please type a valid port']"
     />
@@ -68,8 +68,8 @@ const isValidHost = (value: string) => {
     <q-input
       filled
       v-model="model.ownId"
-      label="Remote ID"
-      hint="remote id defined in loxone config"
+      label="Own ID"
+      hint="own id sent to the miniserver"
       :rules="[ val => val && val.length > 0 || 'Please type something']"
     />
   </q-form>
