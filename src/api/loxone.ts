@@ -34,6 +34,10 @@ export const deleteInstance = (instanceId: number) => {
   return api.delete(`/api/loxone/${instanceId}`)
 }
 
+export const testLoxone = (instanceId: number) => {
+  return api.post(`/api/loxone/${instanceId}/test`, {})
+}
+
 export const startLoxone = (instanceId: number) => {
   return api.patch(`/api/loxone/${instanceId}/start`)
 }
